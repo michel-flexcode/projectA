@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('scopes', function (Blueprint $table) {
             $table->id();
+            $table->text('url');
+            $table->foreignId('report_id')->constrained()->onDelete('cascade');
+            $table->integer('ordre');
             $table->timestamps();
         });
     }
