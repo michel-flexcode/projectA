@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('scope_vulnerabilities', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('vulnerability_id')->constrained()->onDelete('cascade');
+            $table->foreignId('scope_id')->constrained()->onDelete('cascade');
+            $table->text('description');
+            $table->double('level', 10, 1);
+            $table->string('name');
+            $table->text('solution');
             $table->timestamps();
         });
     }

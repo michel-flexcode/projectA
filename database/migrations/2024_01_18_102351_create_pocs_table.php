@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('pocs', function (Blueprint $table) {
             $table->id();
+            $table->text('conclusion');
+            $table->text('description');
+            $table->foreignId('scope_vulnerability_id')->constrained()->onDelete('cascade');
+            $table->integer('ordre');
             $table->timestamps();
         });
     }
