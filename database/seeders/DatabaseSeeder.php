@@ -23,5 +23,6 @@ class DatabaseSeeder extends Seeder
         $this->call(CompanySeeder::class);
         $this->call(VulnerabilitySeeder::class);
         $this->call(ReportSeeder::class);
+        $this->call(PocSeeder::class);
     }
 }

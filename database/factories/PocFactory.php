@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\ScopeVulnerability;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,11 @@ class PocFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'conclusion' => $this->faker->sentence,
+            'description' => $this->faker->paragraph,
+            'scope_vulnerability_id' => ScopeVulnerability::factory(),
+            'ordre' => $this->faker->randomNumber(),
+            // Add any other fields you want to generate data for
         ];
     }
 }
