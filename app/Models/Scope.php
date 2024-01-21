@@ -9,6 +9,12 @@ class Scope extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'report_id',
+        'url',
+        'ordre',
+    ];
+
     // Relationship: Scope belongs to a Report
     public function report()
     {

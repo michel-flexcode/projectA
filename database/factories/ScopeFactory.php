@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Report;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,10 @@ class ScopeFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'report_id' => Report::get()->random()->id,
+            'url' => $this->faker->paragraph,
+            'ordre' => $this->faker->randomNumber(),
+            // Add any other fields you want to generate data for
         ];
     }
 }
