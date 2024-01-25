@@ -26,9 +26,9 @@
 
         <div class="flex items-center space-x-4">
 
-            <a href="{{ route('login') }}" class="font-medium text-gray-600 hover:text-gray-500 transition">Login</a>
+            <a href="{{ route('login') }}" class="font-medium text-gray-600 hover:text-gray-500 transition">Logina</a>
             <a href="{{ route('register') }}"
-                class="font-medium text-gray-600 hover:text-gray-500 transition">Register</a>
+                class="font-medium text-gray-600 hover:text-gray-500 transition">Registera</a>
         </div>
     </nav>
 
