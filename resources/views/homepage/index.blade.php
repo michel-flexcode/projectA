@@ -1,8 +1,10 @@
 <x-guest-layout>
-    <div class="flex items-center justify-center h-screen"
+    <div class="flex flex-col justify-center h-screen"
         style="background-image: url('{{ asset('storage/backgrounds/HopliteV2.png') }}'); background-size: cover;">
 
-        <div class="">
+        <div class="w-4/12"></div>
+        {{-- // md:w-1/3 lg:w-1/4 --}}
+        <div class="mx-auto xl:w-1/4">
 
             <img src="{{ asset('storage/backgrounds/EY Digital Brand.png') }}" alt="Logo d'EY"
                 class="mx-auto w-1/2 h-auto object-cover mb-4">
@@ -55,7 +57,9 @@
             </form>
         </div>
 
+        <footer class="w-full text-right p-4 bg-gray-800 text-white">
+            <p>Mon projet</p>
+        </footer>
     </div>
-    <footer>
-    </footer>
+
 </x-guest-layout>
