@@ -2,18 +2,21 @@
     <div class="flex items-center justify-center h-screen"
         style="background-image: url('{{ asset('storage/backgrounds/HopliteV2.png') }}'); background-size: cover;">
 
-        <div class="bg-white p-8 rounded-lg shadow-md">
+        <div class="">
+
+            <img src="{{ asset('storage/backgrounds/EY Digital Brand.png') }}" alt="Logo d'EY"
+                class="mx-auto w-1/2 h-auto object-cover mb-4">
 
             <x-auth-session-status class="mb-4" :status="session('status')" />
 
             <form method="POST" action="{{ route('login') }}">
                 @csrf
 
-                <!-- Email Address -->
+                <!--Attention à la font ! Email Address -->
                 <div>
-                    <x-input-label for="email" :value="__('Email')" />
-                    <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')"
-                        required autofocus autocomplete="username" />
+                    <x-input-label for="email" :value="__('Email')" class="text-white font-bold font-roboto" />
+                    <x-text-input id="email" class="block mt-1 w-full" type="email" name="email"
+                        :value="old('email')" required autofocus autocomplete="username" />
                     <x-input-error :messages="$errors->get('email')" class="mt-2" />
                 </div>
 
@@ -53,4 +56,6 @@
         </div>
 
     </div>
+    <footer>
+    </footer>
 </x-guest-layout>
