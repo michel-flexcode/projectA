@@ -1,5 +1,5 @@
 <!-- resources/views/layouts/navigation.blade.php -->
-<nav x-data="{ open: false }" class="border-b border-gray-100" style="background-color: #1A1C24;">
+<nav x-data="{ open: false }" class="border-b border-red-500" style="background-color: #1A1C24;">
     <!-- Primary Navigation Menu -->
     {{-- <div class="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6"> --}}
     <div class="max-w-7xl mx-auto px-2 sm:px-2 lg:px-2">
