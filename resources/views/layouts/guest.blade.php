@@ -17,7 +17,7 @@
 
 <body class="font-sans text-gray-900 antialiased">
 
-    <nav class="flex justify-between items-center py-4 px-8 bg-gray-100">
+    {{-- <nav class="flex justify-between items-center py-4 px-8 bg-gray-100">
         <a href="/"
             class="group font-bold text-3xl flex items-center space-x-4 hover:text-emerald-600 transition ">
             <x-application-logo class="w-10 h-10 fill-current text-gray-500 group-hover:text-emerald-500 transition" />
@@ -29,9 +29,9 @@
             <a href="{{ route('login') }}" class="font-medium text-gray-600 hover:text-gray-500 transition">Logina</a>
             <a href="{{ route('register') }}"
                 class="font-medium text-gray-600 hover:text-gray-500 transition">Registera</a>
-        </div>
+        </div> --}}
     </nav>
-    {{-- comment --}}
+
     <main>
         {{ $slot }}
     </main>
