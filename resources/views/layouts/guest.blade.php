@@ -30,7 +30,7 @@
             <a href="{{ route('register') }}"
                 class="font-medium text-gray-600 hover:text-gray-500 transition">Registera</a>
         </div> --}}
-    </nav>
+    {{-- </nav> --}}
 
     <main>
         {{ $slot }}
