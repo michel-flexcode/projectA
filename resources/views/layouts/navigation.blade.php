@@ -16,7 +16,7 @@
 
             <!-- Navigation Links -->
             <!-- Search Bar -->
-            <div class="hidden space-x-4 sm:-my-px sm:ml-2 sm:flex items-center">
+            {{-- <div class="hidden space-x-4 sm:-my-px sm:ml-2 sm:flex items-center">
                 <form method="GET" action="{{ route('search') }}" class="flex">
                     <input type="text" name="query" placeholder="Search Reports:"
                         class="px-2 py-1 border rounded-l-md focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-transparent">
@@ -25,7 +25,23 @@
                         Search
                     </button>
                 </form>
+            </div> --}}
+            <!-- Search Bar V2-->
+            <div class="hidden space-x-4 sm:-my-px sm:ml-2 sm:flex items-center">
+                <form method="GET" action="{{ route('search') }}" class="flex">
+                    <input type="text" name="query" placeholder="Search Reports:"
+                        class="px-2 py-1 border rounded-l-md focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-transparent">
+                    <button type="submit"
+                        class="px-2 py-1 bg-[#0086F4] text-white rounded-r-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:ring-offset-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-yellow-500" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M15 15l4.85 4.85M10 18a8 8 0 100-16 8 8 0 000 16z" />
+                        </svg>
+                    </button>
+                </form>
             </div>
+
 
             <div class="hidden sm:flex sm:items-center sm:ms-6">
                 <button
