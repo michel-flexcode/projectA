@@ -8,11 +8,11 @@
         <div class="flex justify-between my-2 h-16">
 
             <!-- Logo -->
-            <div class="shrink-0 flex items-center mt-1 h-full">
-                <a href="{{ route('dashboard') }}" class="h-full">
-                    <x-application-logo class="block h-full w-auto fill-current text-gray-600" />
-                </a>
-            </div>
+            {{-- <div class="shrink-0 flex items-center mt-1 h-full">
+                    <a href="{{ route('dashboard') }}" class="h-full">
+                        <x-application-logo class="block h-full w-auto fill-current text-gray-600" />
+                    </a>
+                </div> --}}
 
             <!-- Navigation Links -->
             <!-- Search Bar -->
