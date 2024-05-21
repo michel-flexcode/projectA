@@ -46,7 +46,7 @@
 </div> --}}
 
 <!-- resources/views/partials/sidebar.blade.php -->
-<div class="w-64 bg-gray-800 text-white">
+<div class="w-64 text-white" style="background-color: #1A1C24;">
     <div class="shrink-0 flex items-center mt-2 h-16 mx-4">
         <a href="{{ route('dashboard') }}" class="h-full">
             <x-application-logo class="block h-full w-auto fill-current text-gray-600" />

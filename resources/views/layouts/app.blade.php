@@ -35,7 +35,7 @@
             @endif
 
             <!-- Page Content -->
-            <main class="flex-auto overflow-y-auto" style="background-color: #1A1C24;">
+            <main class="flex-auto overflow-y-auto" style="background-color: #000000;">
                 {{ $slot }}
             </main>
         </div>
