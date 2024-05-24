@@ -1,6 +1,4 @@
-<!-- resources/views/companies/create.blade.php -->
-
-<x-app-layout>
+{{-- <x-app-layout>
     <div class="container mx-auto mt-8">
         <h1 class="text-2xl font-bold mb-4">Register a Company</h1>
 
@@ -10,7 +8,7 @@
             </div>
         @endif
 
-        <form action="{{ route('company.store') }}" method="POST">
+        <form action="{{ route('company.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="mb-4">
                 <label for="name" class="block mb-2">Company Name:</label>
@@ -20,10 +18,36 @@
                 <label for="address" class="block mb-2">Company Address:</label>
                 <input type="text" name="address" id="address" class="border rounded px-4 py-2 w-full">
             </div>
-            <!-- Ajoutez d'autres champs au besoin -->
+            <div class="mb-4">
+                <label for="web" class="block mb-2">Company Website:</label>
+                <input type="text" name="web" id="web" class="border rounded px-4 py-2 w-full">
+            </div>
+            <div class="mb-4">
+                <label for="mail_domain" class="block mb-2">Mail Domain:</label>
+                <input type="text" name="mail_domain" id="mail_domain" class="border rounded px-4 py-2 w-full">
+            </div>
+            <div class="mb-4">
+                <label for="logo" class="block mb-2">Company Logo:</label>
+                <input type="file" name="logo" id="logo" class="border rounded px-4 py-2 w-full">
+            </div>
             <div>
                 <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Register Company</button>
             </div>
         </form>
+    </div>
+</x-app-layout> --}}
+
+<!-- resources/views/sidebarpages/companies.blade.php -->
+
+<x-app-layout>
+    <div class="container mx-auto mt-8">
+        <h1 class="text-2xl font-bold mb-4">List of Companies</h1>
+
+        <ul>
+            @foreach ($companies as $company)
+                <li>{{ $company->name }}</li>
+                <!-- Afficher d'autres informations sur l'entreprise si nécessaire -->
+            @endforeach
+        </ul>
     </div>
 </x-app-layout>
