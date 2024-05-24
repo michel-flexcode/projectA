@@ -7,26 +7,27 @@
     <ul class="my-4 mx-4">
         <li class="flex items-center">
             <span class="inline-block w-2.5 h-2.5 bg-gray-500 rounded-full mr-3"></span>
-            <a href="{{ route('dashboard') }}" class="block py-2">
-                Dashboard</a>
+            <a href="#home" class="block py-2">Dashboard</a>
+        </li>
+        <li class="flex items-center">
+            <div class="bg-[#1A1C24] p-6 flex justify-center items-center h-full">
+                <a href="{{ route('sidebarpages.vulnerabilities') }}" class="text-white font-bold text-xl">Listed
+                    Vulnerabilities</a>
+            </div>
+        </li>
+        <li class="flex items-center">
+            <div class="bg-[#1A1C24] p-6 flex justify-center items-center h-full">
+                <a href="{{ route('sidebarpages.companies') }}" class="text-white font-bold text-xl">Listed
+                    Registered companies</a>
+            </div>
         </li>
         <li class="flex items-center">
             <span class="inline-block w-2.5 h-2.5 bg-gray-500 rounded-full mr-3"></span>
-            <a href="{{ route('sidebarpages.vulnerabilities') }}" class="block py-2">Listed
-                Vulnerabilities</a>
+            <a href="#reports" class="block py-2">Reports</a>
         </li>
         <li class="flex items-center">
             <span class="inline-block w-2.5 h-2.5 bg-gray-500 rounded-full mr-3"></span>
-            <a href="{{ route('sidebarpages.companies') }}" class="block py-2">Listed
-                Registered companies</a>
-        </li>
-        <li class="flex items-center">
-            <span class="inline-block w-2.5 h-2.5 bg-gray-500 rounded-full mr-3"></span>
-            {{-- <a href="{{ route('sidebarpages.reports') }}" class="block py-2">Reports</a> --}}
-        </li>
-        <li class="flex items-center">
-            <span class="inline-block w-2.5 h-2.5 bg-gray-500 rounded-full mr-3"></span>
-            {{-- <a href="{{ route('sidebarpages.nist') }}" class="block py-2">NIST</a> --}}
+            <a href="#nist" class="block py-2">NIST</a>
         </li>
     </ul>
 </div>
