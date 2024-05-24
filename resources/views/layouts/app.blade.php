@@ -16,13 +16,13 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="font-sans antialiased">
-    <div class="min-h-screen bg-gray-100 flex">
+<body class="font-sans antialiased h-screen overflow-hidden">
+    <div class="flex h-full bg-gray-100">
         <!-- Sidebar -->
         @include('layouts.sidebar')
 
         <!-- Main Content -->
-        <div class="flex-1 flex flex-col">
+        <div class="flex-1 flex flex-col h-full">
             @include('layouts.navigation')
 
             <!-- Page Heading -->

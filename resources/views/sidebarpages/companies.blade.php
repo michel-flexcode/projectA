@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{{-- <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
@@ -36,4 +36,11 @@
     </div>
 </body>
 
-</html>
+</html> --}}
+{{-- <x-app-layout>
+    <div class="bg-black flex items-center justify-center min-h-screen">
+        <div class="bg-[#1A1C24] p-6 flex justify-center items-center h-full">
+            <h2 class="text-white font-bold text-xl">Registered Companies</h2>
+        </div>
+    </div>
+</x-app-layout> --}}

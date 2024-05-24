@@ -3,6 +3,8 @@
 use App\Http\Controllers\HomepageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SearchController;
+
+use App\Http\Controllers\SidebarpagesController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,6 +30,11 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/search', [SearchController::class, 'index'])->name('search');
+
+    // Routes pour les vues dans le dossier sidebarpages
+    // Route::view('/sidebarpages/companies', 'sidebarpages.companies')->name('sidebarpages.companies');
+    Route::get('/sidebarpages/vulnerabilities', [SidebarpagesController::class, 'vulnerabilities'])->name('sidebarpages.vulnerabilities');
+    // Route::view('/sidebarpages/clients', 'sidebarpages.clients')->name('sidebarpages.clients');
 });
 
 require __DIR__ . '/auth.php';
