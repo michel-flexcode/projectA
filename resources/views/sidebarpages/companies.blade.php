@@ -1,46 +1,29 @@
-{{-- <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<!-- resources/views/companies/create.blade.php -->
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+<x-app-layout>
+    <div class="container mx-auto mt-8">
+        <h1 class="text-2xl font-bold mb-4">Register a Company</h1>
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
-
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-
-    <!-- Scripts -->
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-</head>
-
-<body class="font-sans antialiased">
-    <div class="min-h-screen bg-gray-100">
-        @include('layouts.navigation')
-
-        <!-- Page Heading -->
-        @if (isset($header))
-            <header class="bg-white shadow">
-                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                    {{ $header }}
-                </div>
-            </header>
+        @if (session('success'))
+            <div class="bg-green-200 text-green-800 px-4 py-2 rounded mb-4">
+                {{ session('success') }}
+            </div>
         @endif
 
-        <!-- Page Content -->
-        <main>
-            {{ $slot }}
-        </main>
+        <form action="{{ route('company.store') }}" method="POST">
+            @csrf
+            <div class="mb-4">
+                <label for="name" class="block mb-2">Company Name:</label>
+                <input type="text" name="name" id="name" class="border rounded px-4 py-2 w-full">
+            </div>
+            <div class="mb-4">
+                <label for="address" class="block mb-2">Company Address:</label>
+                <input type="text" name="address" id="address" class="border rounded px-4 py-2 w-full">
+            </div>
+            <!-- Ajoutez d'autres champs au besoin -->
+            <div>
+                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Register Company</button>
+            </div>
+        </form>
     </div>
-</body>
-
-</html> --}}
-{{-- <x-app-layout>
-    <div class="bg-black flex items-center justify-center min-h-screen">
-        <div class="bg-[#1A1C24] p-6 flex justify-center items-center h-full">
-            <h2 class="text-white font-bold text-xl">Registered Companies</h2>
-        </div>
-    </div>
-</x-app-layout> --}}
+</x-app-layout>
