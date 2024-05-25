@@ -11,7 +11,7 @@ class CompaniesController extends Controller
     public function index()
     {
         // Récupérer toutes les entreprises depuis la base de données
-        $companies = Company::orderBy('name')->paginate(10); // Tri par ordre alphabétique du nom
+        $companies = Company::orderBy('name')->paginate(12); // Tri par ordre alphabétique du nom
 
         // Passer les entreprises récupérées à la vue et afficher la vue
         return view('sidebarpages.companies', ['companies' => $companies]);

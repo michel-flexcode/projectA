@@ -61,6 +61,9 @@
         </div>
 
         <!-- Liens de pagination -->
-        {{ $companies->links() }}
+        <div class="mt-4 justify-center ml-8 mr-8 mb-4">
+            {{ $companies->links() }}
+        </div>
+
     </div>
 </x-app-layout>
