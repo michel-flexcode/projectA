@@ -40,25 +40,27 @@
 <!-- resources/views/sidebarpages/companies.blade.php -->
 
 <x-app-layout>
-    <div class="container mx-auto mt-8 black-bg text-white"> <!-- Ajoutez la classe black-bg et text-white ici -->
-        <h1 class="text-2xl font-bold mb-4">List of Companies</h1>
+    <div class="container mx-auto">
+        <h1 class="text-3xl font-bold mb-4 text-white text-center py-2">List of registered companies</h1>
 
-        <ul>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ml-2 mr-2">
             @foreach ($companies as $company)
-                <li>
-                    <span class="font-bold">{{ $company->name }}</span><br>
-                    <span>Website: <a href="{{ $company->web }}" target="_blank">{{ $company->web }}</a></span><br>
-                    <span>Mail Domain: {{ $company->mail_domain }}</span><br>
+                <div class="bg-gray-800 rounded-lg p-6 text-white">
+                    <h2 class="text-xl font-bold mb-2">{{ $company->name }}</h2>
+                    <p class="mb-2">Website : <a href="{{ $company->web }}" class="text-blue-400"
+                            target="_blank">{{ $company->web }}</a></p>
+                    <p class="mb-2">Mail : {{ $company->mail_domain }}</p>
                     @if ($company->logo)
-                        <img src="{{ $company->logo }}" alt="Company Logo" width="100">
+                        <img src="{{ $company->logo }}" alt="Logo of company : {{ $company->name }}"
+                            class="w-24 h-24 rounded-full mx-auto">
                     @else
-                        No logo available
+                        <p>No logo available</p>
                     @endif
-                </li>
+                </div>
             @endforeach
-        </ul>
+        </div>
 
-        <!-- Pagination links -->
+        <!-- Liens de pagination -->
         {{ $companies->links() }}
     </div>
 </x-app-layout>
