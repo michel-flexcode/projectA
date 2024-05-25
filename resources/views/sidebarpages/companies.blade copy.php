@@ -57,8 +57,5 @@
                 </li>
             @endforeach
         </ul>
-
-        <!-- Pagination links -->
-        {{ $companies->links() }}
     </div>
 </x-app-layout>
