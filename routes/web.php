@@ -6,6 +6,8 @@ use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SidebarpagesController;
 
 use App\Http\Controllers\CompaniesController;
+use App\Http\Controllers\NistController;
+
 
 use Illuminate\Support\Facades\Route;
 
@@ -37,6 +39,9 @@ Route::middleware('auth')->group(function () {
     // Routes pour les vues dans le dossier sidebarpages
     Route::get('/sidebarpages/companies', [CompaniesController::class, 'index'])->name('sidebarpages.companies');
     Route::post('/sidebarpages/companies', [CompaniesController::class, 'store'])->name('company.store');
+
+    Route::get('/sidebarpages/nist', [SidebarpagesController::class, 'nist'])->name('sidebarpages.nist');
+    Route::get('/sidebarpages/reports', [SidebarpagesController::class, 'reports'])->name('sidebarpages.reports');
 
     // Route::view('/sidebarpages/clients', 'sidebarpages.clients')->name('sidebarpages.clients');
 });

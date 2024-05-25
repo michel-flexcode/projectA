@@ -22,11 +22,11 @@
         </li>
         <li class="flex items-center">
             <span class="inline-block w-2.5 h-2.5 bg-gray-500 rounded-full mr-3"></span>
-            {{-- <a href="{{ route('sidebarpages.reports') }}" class="block py-2">Reports</a> --}}
+            <a href="{{ route('sidebarpages.reports') }}" class="block py-2">Reports</a>
         </li>
         <li class="flex items-center">
             <span class="inline-block w-2.5 h-2.5 bg-gray-500 rounded-full mr-3"></span>
-            {{-- <a href="{{ route('sidebarpages.nist') }}" class="block py-2">NIST</a> --}}
+            <a href="{{ route('sidebarpages.nist') }}" class="block py-2">NIST</a>
         </li>
     </ul>
 </div>
