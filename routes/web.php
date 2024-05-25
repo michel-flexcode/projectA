@@ -5,8 +5,8 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SidebarpagesController;
 
+//Celui ci est plutôt pour le panneau interne
 use App\Http\Controllers\CompaniesController;
-use App\Http\Controllers\NistController;
 
 
 use Illuminate\Support\Facades\Route;
@@ -34,9 +34,9 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/search', [SearchController::class, 'index'])->name('search');
-    Route::get('/sidebarpages/vulnerabilities', [SidebarpagesController::class, 'vulnerabilities'])->name('sidebarpages.vulnerabilities');
 
     // Routes pour les vues dans le dossier sidebarpages
+    Route::get('/sidebarpages/vulnerabilities', [SidebarpagesController::class, 'vulnerabilities'])->name('sidebarpages.vulnerabilities');
     Route::get('/sidebarpages/companies', [CompaniesController::class, 'index'])->name('sidebarpages.companies');
     Route::post('/sidebarpages/companies', [CompaniesController::class, 'store'])->name('company.store');
 

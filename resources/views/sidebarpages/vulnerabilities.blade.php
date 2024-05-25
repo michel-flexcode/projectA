@@ -1,22 +1,24 @@
 <x-app-layout>
-    <div class="bg-black flex items-center justify-center min-h-screen">
-        <div class="p-8">
-            <h1 class="text-3xl font-bold text-white mb-8">Listed Vulnerabilities</h1>
+    <div class="container mx-auto">
+        <h1 class="text-3xl font-bold mb-4 text-white text-center py-2">Liste des Vulnérabilités</h1>
 
-            <div class="bg-gray-800 rounded-lg p-6">
-                <h2 class="text-xl font-bold text-white mb-4">Vulnerability 1</h2>
-                <p class="text-white mb-2">Description of vulnerability 1 goes here.</p>
-                <p class="text-white mb-2">Severity: High</p>
-            </div>
-
-            <div class="bg-gray-800 rounded-lg p-6 mt-4">
-                <h2 class="text-xl font-bold text-white mb-4">Vulnerability 2</h2>
-                <p class="text-white mb-2">Description of vulnerability 2 goes here.</p>
-                <p class="text-white mb-2">Severity: Medium</p>
-            </div>
-
-            <!-- Ajoutez d'autres vulnérabilités ici si nécessaire -->
-
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ml-2 mr-2">
+            @foreach ($vulnerabilities as $vulnerability)
+                <div class="bg-gray-800 rounded-lg p-6 text-white flex flex-col justify-between">
+                    <div>
+                        <h2 class="text-xl font-bold mb-2">{{ $vulnerability->name }}</h2>
+                        <p class="mb-2">{{ $vulnerability->description }}</p>
+                        <p class="mb-2">Solution : {{ $vulnerability->solution }}</p>
+                        <p class="mb-2">Level : {{ $vulnerability->level }}</p>
+                    </div>
+                </div>
+            @endforeach
         </div>
+
+        <!-- Liens de pagination -->
+        <div class="mt-4 justify-center ml-8 mr-8 mb-4">
+            {{ $vulnerabilities->links() }}
+        </div>
+
     </div>
 </x-app-layout>
