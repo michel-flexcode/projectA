@@ -45,17 +45,21 @@
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ml-2 mr-2">
             @foreach ($companies as $company)
-                <div class="bg-gray-800 rounded-lg p-6 text-white">
-                    <h2 class="text-xl font-bold mb-2">{{ $company->name }}</h2>
-                    <p class="mb-2">Website : <a href="{{ $company->web }}" class="text-blue-400"
-                            target="_blank">{{ $company->web }}</a></p>
-                    <p class="mb-2">Mail : {{ $company->mail_domain }}</p>
-                    @if ($company->logo)
-                        <img src="{{ $company->logo }}" alt="Logo of company : {{ $company->name }}"
-                            class="w-24 h-24 rounded-full mx-auto">
-                    @else
-                        <p>No logo available</p>
-                    @endif
+                <div class="bg-gray-800 rounded-lg p-6 text-white flex flex-col justify-between">
+                    <div>
+                        <h2 class="text-xl font-bold mb-2">{{ $company->name }}</h2>
+                        <p class="mb-2">Website : <a href="{{ $company->web }}" class="text-blue-400"
+                                target="_blank">{{ $company->web }}</a></p>
+                        <p class="mb-2">Mail : {{ $company->mail_domain }}</p>
+                    </div>
+                    <div class="flex justify-center">
+                        @if ($company->logo)
+                            <img src="{{ $company->logo }}" alt="Logo of company : {{ $company->name }}"
+                                class="w-24 h-24 rounded-full">
+                        @else
+                            <p>No logo available</p>
+                        @endif
+                    </div>
                 </div>
             @endforeach
         </div>
