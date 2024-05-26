@@ -21,11 +21,13 @@ class Report extends Model
         // Ajoutez d'autres attributs remplissables au besoin
     ];
 
+    // Relation avec le modèle Company
     public function company()
     {
         return $this->belongsTo(Company::class);
     }
 
+    // Relation avec le modèle Scope
     public function scopes()
     {
         return $this->hasMany(Scope::class);
