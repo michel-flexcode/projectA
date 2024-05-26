@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
 use App\Models\Report;
 use App\Models\Company;
@@ -29,6 +31,7 @@ class ReportsController extends Controller
             'vulnerabilities' => 'nullable|array',
             'vulnerabilities.*' => 'exists:vulnerabilities,id',
             'state' => 'nullable|string|max:255',
+            'date' => 'nullable|date',
             'recommendations' => 'nullable|string',
             'proposals' => 'nullable|string',
             'conclusions' => 'nullable|string',
@@ -42,12 +45,12 @@ class ReportsController extends Controller
         $report->company_id = $validatedData['company_id'];
         $report->vulnerabilities = implode(',', $validatedData['vulnerabilities'] ?? []);
         $report->state = $validatedData['state'];
-        $report->date = now();  // Set the date to the current date and time
+        $report->date = $validatedData['date'];
         $report->recommendations = $validatedData['recommendations'];
         $report->proposals = $validatedData['proposals'];
         $report->conclusions = $validatedData['conclusions'];
         $report->save();
 
-        return redirect()->route('reports.create')->with('success', 'Report created successfully.');
+        return redirect()->route('reports.index')->with('success', 'Report created successfully.');
     }
 }

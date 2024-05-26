@@ -53,6 +53,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/reports', [ReportsController::class, 'store'])->name('reports.store');
     Route::get('/reports/create', [ReportsController::class, 'create'])->name('reports.create');
 
+    Route::get('/reports', [ReportsController::class, 'index'])->name('reports.index');
 
 
 
