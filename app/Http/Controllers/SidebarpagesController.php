@@ -29,7 +29,9 @@ class SidebarpagesController extends Controller
     public function reports()
     {
         // Fetch all reports with pagination
-        $reports = Report::paginate(10); // Corrected from Reports to Report
+        // $reports = Report::paginate(12); // Corrected from Reports to Report
+        $reports = Report::with('company')->paginate(12); // Adjust the number as needed
+
 
         // Return the view and pass the reports data to it
         return view('sidebarpages.reports', ['reports' => $reports]); // Corrected variable name to $reports

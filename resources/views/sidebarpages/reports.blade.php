@@ -1,20 +1,28 @@
 <x-app-layout>
-    <div class="container mx-auto mt-8 text-white">
-        <h1 class="text-2xl font-bold mb-4">List of Reports</h1>
+    <div class="container mx-auto">
+        <h1 class="text-3xl font-bold mb-4 text-white text-center py-2">List of Reports</h1>
 
-        <ul>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ml-2 mr-2">
             @foreach ($reports as $report)
-                <li>
-                    <strong>Company ID:</strong> {{ $report->company_id }}<br>
-                    <strong>Name:</strong> {{ $report->name_doc }}<br>
-                    <strong>Vulnerabilities:</strong> {{ $report->vulnerabilities }}<br>
-                    <strong>State:</strong> {{ $report->state }}<br>
-                    <strong>Date:</strong> {{ $report->date }}<br>
-                    <strong>Recommendations:</strong> {{ $report->recommendations }}<br>
-                    <strong>Proposals:</strong> {{ $report->proposals }}<br>
-                    <strong>Conclusions:</strong> {{ $report->conclusions }}<br>
-                </li>
+                <div class="bg-gray-800 rounded-lg p-6 text-white flex flex-col justify-between">
+                    <div>
+                        <h2 class="text-xl font-bold mb-2 text-center">{{ $report->company->name }}</h2>
+                        <p class="mb-2"><strong>Name:</strong> {{ $report->name_doc }}</p>
+                        <p class="mb-2"><strong>Vulnerabilities:</strong> {{ $report->vulnerabilities }}</p>
+                        <p class="mb-2"><strong>State:</strong> {{ $report->state }}</p>
+                        <p class="mb-2"><strong>Date:</strong> {{ $report->date }}</p>
+                        <p class="mb-2"><strong>Recommendations:</strong> {{ $report->recommendations }}</p>
+                        <p class="mb-2"><strong>Proposals:</strong> {{ $report->proposals }}</p>
+                        <p class="mb-2"><strong>Conclusions:</strong> {{ $report->conclusions }}</p>
+                    </div>
+                </div>
             @endforeach
-        </ul>
+        </div>
+
+        <!-- Pagination links -->
+        <div class="mt-4 justify-center ml-8 mr-8 mb-4">
+            {{ $reports->links() }}
+        </div>
+
     </div>
 </x-app-layout>
