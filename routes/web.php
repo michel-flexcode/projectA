@@ -44,7 +44,9 @@ Route::middleware('auth')->group(function () {
 
 
     //search non fonctionnel
+    // Route::get('/search', [SearchController::class, 'index'])->name('search');
     Route::get('/search', [SearchController::class, 'index'])->name('search');
+
 
     //Ici, cette route n'est peut être pas adaptée à la page sidebar
     Route::post('/sidebarpages/companies', [CompaniesController::class, 'store'])->name('company.store');

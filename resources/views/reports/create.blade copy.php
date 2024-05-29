@@ -1,20 +1,19 @@
 <x-app-layout>
-    <div class="container mx-auto mt-8 mb-8 px-4 md:px-8 max-w-full overflow-hidden">
-        <h1 class="text-3xl font-bold mb-4 text-white text-center">Create Report</h1>
+    <div class="container mx-auto mt-8">
+        <h1 class="text-2xl font-bold mb-4 text-white text-center">Create Report</h1>
 
         @if (session('success'))
-            <div class="alert alert-success text-green-500 mb-4">
+            <div class="alert alert-success text-red-500">
                 {{ session('success') }}
             </div>
         @endif
 
-        <form method="POST" action="{{ route('reports.store') }}" class="bg-gray-800 p-6 rounded-lg max-w-4xl mx-auto">
+        <form method="POST" action="{{ route('reports.store') }}">
             @csrf
 
             <div class="mb-4">
                 <label for="company_id" class="block text-sm font-medium text-white">Company</label>
-                <select name="company_id" id="company_id"
-                    class="form-select mt-1 block w-full rounded-md bg-gray-700 text-white border-gray-600" required>
+                <select name="company_id" id="company_id" class="form-select mt-1 block w-full" required>
                     @foreach ($companies as $company)
                         <option value="{{ $company->id }}">{{ $company->name }}</option>
                     @endforeach
@@ -23,39 +22,33 @@
 
             <div class="mb-4">
                 <label for="vulnerabilities" class="block text-sm font-medium text-white">Vulnerabilities</label>
-                <input type="text" id="vulnerabilities"
-                    class="form-input mt-1 block w-full rounded-md bg-gray-700 text-white border-gray-600"
+                <input type="text" id="vulnerabilities" class="form-input mt-1 block w-full"
                     placeholder="Start typing to search for vulnerabilities">
                 <div id="selected-vulnerabilities" class="mt-2"></div>
             </div>
 
             <div class="mb-4">
                 <label for="state" class="block text-sm font-medium text-white">State</label>
-                <input type="text" name="state" id="state"
-                    class="form-input mt-1 block w-full rounded-md bg-gray-700 text-white border-gray-600">
+                <input type="text" name="state" id="state" class="form-input mt-1 block w-full">
             </div>
 
             <div class="mb-4">
                 <label for="recommendations" class="block text-sm font-medium text-white">Recommendations</label>
-                <textarea name="recommendations" id="recommendations"
-                    class="form-input mt-1 block w-full rounded-md bg-gray-700 text-white border-gray-600"></textarea>
+                <textarea name="recommendations" id="recommendations" class="form-input mt-1 block w-full"></textarea>
             </div>
 
             <div class="mb-4">
                 <label for="proposals" class="block text-sm font-medium text-white">Proposals</label>
-                <textarea name="proposals" id="proposals"
-                    class="form-input mt-1 block w-full rounded-md bg-gray-700 text-white border-gray-600"></textarea>
+                <textarea name="proposals" id="proposals" class="form-input mt-1 block w-full"></textarea>
             </div>
 
             <div class="mb-4">
                 <label for="conclusions" class="block text-sm font-medium text-white">Conclusions</label>
-                <textarea name="conclusions" id="conclusions"
-                    class="form-input mt-1 block w-full rounded-md bg-gray-700 text-white border-gray-600"></textarea>
+                <textarea name="conclusions" id="conclusions" class="form-input mt-1 block w-full"></textarea>
             </div>
 
-            <div class="mb-4 text-center">
-                <button type="submit"
-                    class="bg-[#0086F4] text-white px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2">Create
+            <div class="mb-4">
+                <button type="submit" class="bg-[#0086F4] text-white px-4 py-2 rounded hover:bg-blue-600">Create
                     Report</button>
             </div>
         </form>
@@ -81,11 +74,10 @@
                 source: vulnerabilities,
                 select: function(event, ui) {
                     $("#selected-vulnerabilities").append(
-                        '<div class="selected-vulnerability flex items-center mt-2" data-id="' + ui
-                        .item.value + '">' +
+                        '<div class="selected-vulnerability" data-id="' + ui.item.value + '">' +
                         '<input type="hidden" name="vulnerabilities[]" value="' + ui.item.value +
                         '">' +
-                        '<span class="text-white">' + ui.item.label + '</span>' +
+                        '<span>' + ui.item.label + '</span>' +
                         '<button type="button" class="remove-vulnerability text-red-500 ml-2">Remove</button>' +
                         '</div>'
                     );
