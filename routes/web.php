@@ -14,6 +14,7 @@ use App\Http\Controllers\ReportsController;
 use App\Http\Controllers\VulnerabilityController;
 
 
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -61,13 +62,17 @@ Route::middleware('auth')->group(function () {
     Route::get('/reports', [ReportsController::class, 'index'])->name('reports.index');
 
     // 01/06/2024 Vulnerabilities crud test
-    Route::get('/vulnerabilities', [VulnerabilityController::class, 'index'])->name('vulnerabilities.index');
-    Route::get('/vulnerabilities/create', [VulnerabilityController::class, 'create'])->name('vulnerabilities.create');
-    Route::post('/vulnerabilities', [VulnerabilityController::class, 'store'])->name('vulnerabilities.store');
-    Route::get('/vulnerabilities/{id}', [VulnerabilityController::class, 'show'])->name('vulnerabilities.show');
-    Route::get('/vulnerabilities/{id}/edit', [VulnerabilityController::class, 'edit'])->name('vulnerabilities.edit');
-    Route::put('/vulnerabilities/{id}', [VulnerabilityController::class, 'update'])->name('vulnerabilities.update');
-    Route::delete('/vulnerabilities/{id}', [VulnerabilityController::class, 'destroy'])->name('vulnerabilities.destroy');
+    Route::prefix('vulnerabilities')->group(function () {
+        Route::get('/', [VulnerabilityController::class, 'index'])->name('vulnerabilities.index');
+        Route::get('/create', [VulnerabilityController::class, 'create'])->name('vulnerabilities.create');
+        Route::post('/', [VulnerabilityController::class, 'store'])->name('vulnerabilities.store');
+        Route::get('/{vulnerability}/edit', [VulnerabilityController::class, 'edit'])->name('vulnerabilities.edit');
+        Route::put('/{vulnerability}', [VulnerabilityController::class, 'update'])->name('vulnerabilities.update');
+        Route::delete('/{vulnerability}', [VulnerabilityController::class, 'destroy'])->name('vulnerabilities.destroy');
+    });
+
+    Route::get('/vulnerabilities/index', [VulnerabilityController::class, 'index'])->name('vulnerabilities.index');
+    Route::get('/vulnerabilities/{vulnerability}', [VulnerabilityController::class, 'show'])->name('vulnerabilities.show');
 });
 
 require __DIR__ . '/auth.php';
