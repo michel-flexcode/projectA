@@ -10,6 +10,9 @@ use App\Http\Controllers\CompaniesController;
 //Ici bouton de nav
 use App\Http\Controllers\ReportsController;
 
+//01/06/2024 vulnerabilites crud
+use App\Http\Controllers\VulnerabilityController;
+
 
 use Illuminate\Support\Facades\Route;
 
@@ -57,9 +60,14 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/reports', [ReportsController::class, 'index'])->name('reports.index');
 
-
-
-    // Route::view('/sidebarpages/clients', 'sidebarpages.clients')->name('sidebarpages.clients');
+    // 01/06/2024 Vulnerabilities crud test
+    Route::get('/vulnerabilities', [VulnerabilityController::class, 'index'])->name('vulnerabilities.index');
+    Route::get('/vulnerabilities/create', [VulnerabilityController::class, 'create'])->name('vulnerabilities.create');
+    Route::post('/vulnerabilities', [VulnerabilityController::class, 'store'])->name('vulnerabilities.store');
+    Route::get('/vulnerabilities/{id}', [VulnerabilityController::class, 'show'])->name('vulnerabilities.show');
+    Route::get('/vulnerabilities/{id}/edit', [VulnerabilityController::class, 'edit'])->name('vulnerabilities.edit');
+    Route::put('/vulnerabilities/{id}', [VulnerabilityController::class, 'update'])->name('vulnerabilities.update');
+    Route::delete('/vulnerabilities/{id}', [VulnerabilityController::class, 'destroy'])->name('vulnerabilities.destroy');
 });
 
 require __DIR__ . '/auth.php';
