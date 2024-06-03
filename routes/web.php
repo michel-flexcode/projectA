@@ -73,6 +73,8 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/vulnerabilities/index', [VulnerabilityController::class, 'index'])->name('vulnerabilities.index');
     Route::get('/vulnerabilities/{vulnerability}', [VulnerabilityController::class, 'show'])->name('vulnerabilities.show');
+    // 06/03/2024
+    Route::post('/vulnerabilities', [VulnerabilityController::class, 'store'])->name('vulnerabilities.store');
 });
 
 require __DIR__ . '/auth.php';

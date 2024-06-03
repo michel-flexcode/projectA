@@ -13,7 +13,7 @@ class SidebarpagesController extends Controller
     public function vulnerabilities()
     {
         // Fetch all vulnerabilities with pagination
-        $vulnerabilities = Vulnerability::paginate(10);
+        $vulnerabilities = Vulnerability::paginate(12);
 
         // Return the view and pass the vulnerabilities data to it
         return view('sidebarpages.vulnerabilities', ['vulnerabilities' => $vulnerabilities]);
