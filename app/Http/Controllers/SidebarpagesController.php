@@ -34,7 +34,7 @@ class SidebarpagesController extends Controller
         $consultants = Consultant::paginate(12); // Assurez-vous que Consultant est le bon modèle
 
         // Retourner la vue et passer les données des consultants
-        return view('consultants.index', ['consultants' => $consultants]);
+        return view('sidebarpages.consultants', ['consultants' => $consultants]);
     }
 
     public function reports()
