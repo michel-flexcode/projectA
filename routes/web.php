@@ -13,6 +13,9 @@ use App\Http\Controllers\ReportsController;
 //01/06/2024 vulnerabilites crud
 use App\Http\Controllers\VulnerabilityController;
 
+// 03/06
+use App\Http\Controllers\ConsultantsController;
+
 
 
 use Illuminate\Support\Facades\Route;
@@ -40,11 +43,23 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     //Route fonctionnelles
+    Route::prefix('vulnerabilities')->name('vulnerabilities.')->group(function () {
+        Route::get('/', [VulnerabilityController::class, 'index'])->name('index');
+        Route::get('/create', [VulnerabilityController::class, 'create'])->name('create');
+        Route::post('/', [VulnerabilityController::class, 'store'])->name('store');
+        Route::get('/{vulnerability}', [VulnerabilityController::class, 'show'])->name('show');
+        Route::get('/{vulnerability}/edit', [VulnerabilityController::class, 'edit'])->name('edit');
+        Route::put('/{vulnerability}', [VulnerabilityController::class, 'update'])->name('update');
+        Route::delete('/{vulnerability}', [VulnerabilityController::class, 'destroy'])->name('destroy');
+    });
     // Routes pour les vues dans le dossier sidebarpages
     Route::get('/sidebarpages/nist', [SidebarpagesController::class, 'nist'])->name('sidebarpages.nist');
     Route::get('/sidebarpages/reports', [SidebarpagesController::class, 'reports'])->name('sidebarpages.reports');
     Route::get('/sidebarpages/vulnerabilities', [SidebarpagesController::class, 'vulnerabilities'])->name('sidebarpages.vulnerabilities');
     Route::get('/sidebarpages/companies', [CompaniesController::class, 'index'])->name('sidebarpages.companies');
+
+    // 03/06/2024 consultant
+    Route::get('/sidebarpages/consultants', [SidebarpagesController::class, 'consultants'])->name('sidebarpages.consultants');
 
 
     //search non fonctionnel
@@ -61,20 +76,16 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/reports', [ReportsController::class, 'index'])->name('reports.index');
 
-    // 01/06/2024 Vulnerabilities crud test
-    Route::prefix('vulnerabilities')->group(function () {
-        Route::get('/', [VulnerabilityController::class, 'index'])->name('vulnerabilities.index');
-        Route::get('/create', [VulnerabilityController::class, 'create'])->name('vulnerabilities.create');
-        Route::post('/', [VulnerabilityController::class, 'store'])->name('vulnerabilities.store');
-        Route::get('/{vulnerability}/edit', [VulnerabilityController::class, 'edit'])->name('vulnerabilities.edit');
-        Route::put('/{vulnerability}', [VulnerabilityController::class, 'update'])->name('vulnerabilities.update');
-        Route::delete('/{vulnerability}', [VulnerabilityController::class, 'destroy'])->name('vulnerabilities.destroy');
+    // 03/06/2024 worker
+    Route::prefix('consultants')->name('consultants.')->group(function () {
+        Route::get('/', [ConsultantsController::class, 'index'])->name('index');
+        Route::get('/create', [ConsultantsController::class, 'create'])->name('create');
+        Route::post('/', [ConsultantsController::class, 'store'])->name('store');
+        Route::get('/{consultant}', [ConsultantsController::class, 'show'])->name('show');
+        Route::get('/{consultant}/edit', [ConsultantsController::class, 'edit'])->name('edit');
+        Route::put('/{consultant}', [ConsultantsController::class, 'update'])->name('update');
+        Route::delete('/{consultant}', [ConsultantsController::class, 'destroy'])->name('destroy');
     });
-
-    Route::get('/vulnerabilities/index', [VulnerabilityController::class, 'index'])->name('vulnerabilities.index');
-    Route::get('/vulnerabilities/{vulnerability}', [VulnerabilityController::class, 'show'])->name('vulnerabilities.show');
-    // 06/03/2024
-    Route::post('/vulnerabilities', [VulnerabilityController::class, 'store'])->name('vulnerabilities.store');
 });
 
 require __DIR__ . '/auth.php';

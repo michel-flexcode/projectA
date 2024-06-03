@@ -28,6 +28,11 @@
             <span class="inline-block w-2.5 h-2.5 bg-gray-500 rounded-full mr-3"></span>
             <a href="{{ route('sidebarpages.nist') }}" class="block py-2">NIST</a>
         </li>
+
+        <li class="flex items-center">
+            <span class="inline-block w-2.5 h-2.5 bg-gray-500 rounded-full mr-3"></span>
+            <a href="{{ route('sidebarpages.consultants') }}" class="block py-2">Consultants</a>
+        </li>
     </ul>
 </div>
 

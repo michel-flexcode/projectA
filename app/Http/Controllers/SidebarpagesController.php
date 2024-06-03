@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Nist; // Assurez-vous d'importer le modèle
+use App\Models\Nist;
 use App\Models\Vulnerability;
 use App\Models\Report;
+use App\Models\Consultant;
 
 use Illuminate\Http\Request;
 
@@ -24,6 +25,16 @@ class SidebarpagesController extends Controller
         // Récupère les données depuis le modèle Nist
         $nist = Nist::all(); // Récupérer tous les enregistrements NIST
         return view('sidebarpages.nist', compact('nist')); // Passer les données à la vue
+    }
+
+    // Ici spécial, ne fonctionne pas comme les autres blocs : CRUD
+    public function consultants()
+    {
+        // Fetch all consultants with pagination
+        $consultants = Consultant::paginate(12); // Assurez-vous que Consultant est le bon modèle
+
+        // Retourner la vue et passer les données des consultants
+        return view('consultants.index', ['consultants' => $consultants]);
     }
 
     public function reports()
