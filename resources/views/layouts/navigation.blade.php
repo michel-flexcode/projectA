@@ -1,31 +1,9 @@
 <!-- resources/views/layouts/navigation.blade.php -->
 <nav x-data="{ open: false }" class="" style="background-color: #1A1C24;">
-    <!-- Primary Navigation Menu -->
-    {{-- <div class="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6"> --}}
-    {{-- <div class="max-w-7xl mx-auto px-2 sm:px-2 lg:px-2"> --}}
 
     <div class="mx-4 sm:mx-4 lg:mx-8">
         <div class="flex justify-between my-2 h-16">
 
-            <!-- Logo -->
-            {{-- <div class="shrink-0 flex items-center mt-1 h-full">
-                    <a href="{{ route('dashboard') }}" class="h-full">
-                        <x-application-logo class="block h-full w-auto fill-current text-gray-600" />
-                    </a>
-                </div> --}}
-
-            <!-- Navigation Links -->
-            <!-- Search Bar -->
-            {{-- <div class="hidden space-x-4 sm:-my-px sm:ml-2 sm:flex items-center">
-                <form method="GET" action="{{ route('search') }}" class="flex">
-                    <input type="text" name="query" placeholder="Search Reports:"
-                        class="px-2 py-1 border rounded-l-md focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-transparent">
-                    <button type="submit"
-                        class="px-2 py-1 bg-indigo-600 text-white rounded-r-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:ring-offset-2">
-                        Search
-                    </button>
-                </form>
-            </div> --}}
             <!-- Search Bar V2-->
             <div class="hidden space-x-4 sm:-my-px sm:ml-2 sm:flex items-center">
                 <form method="GET" action="{{ route('search') }}" class="flex">

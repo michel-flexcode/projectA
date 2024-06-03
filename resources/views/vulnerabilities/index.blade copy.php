@@ -5,21 +5,6 @@
                 <h2 class="text-white font-bold text-xl text-center">Listed Vulnerabilities</h2>
             </div>
 
-            <div class="flex justify-center mb-4">
-                <form method="GET" action="{{ route('vulnerabilities.index') }}" class="flex">
-                    <input type="text" name="query" value="{{ $query ?? '' }}" placeholder="Search Vulnerabilities:"
-                        class="px-2 py-1 border rounded-l-md focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-transparent">
-                    <button type="submit"
-                        class="px-2 py-1 bg-[#0086F4] text-white rounded-r-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:ring-offset-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-yellow-500" fill="none"
-                            viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M15 15l4.85 4.85M10 18a8 8 0 100-16 8 8 0 000 16z" />
-                        </svg>
-                    </button>
-                </form>
-            </div>
-
             @if ($errors->any())
                 <div class="bg-red-500 text-white p-4 mb-4">
                     <ul>
@@ -60,8 +45,9 @@
                 @endforeach
             </div>
 
-            <div class="mt-4">
-                {{ $vulnerabilities->appends(['query' => $query])->links() }}
+            <!-- Affichage des liens de pagination -->
+            <div class="mt-8">
+                {{ $vulnerabilities->links() }}
             </div>
         </div>
     </div>
