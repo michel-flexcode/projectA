@@ -20,49 +20,32 @@
                 </form>
             </div>
 
-            <div class="container mx-auto">
-                <h1 class="text-3xl font-bold mb-4 text-white text-center py-2">List of consultants</h1>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ml-2 mr-2">
-                    @foreach ($consultants as $consultant)
-                        <div class="bg-gray-800 rounded-lg p-6 text-white flex flex-col justify-between">
-                            <div>
-                                <h2 class="text-xl font-bold mb-2">{{ $consultant->name }}</h2>
-                                <p class="mb-2">{{ $consultant->company }}</p>
-                                <p class="mb-2">Solution : {{ $consultant->role }}</p>
-                            </div>
-                        </div>
-                    @endforeach
+            @if ($errors->any())
+                <div class="bg-red-500 text-white p-4 mb-4">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
                 </div>
+            @endif
 
-                <a href="{{ route('consultants.create') }}"
-                    class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-full text-white bg-[#00B458] hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
-                    + Create consultant
-                </a>
-                <a href="{{ route('consultants.delete') }}"
-                    class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-full text-white bg-[#00B458] hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
-                    + delete consultant
-                </a>
-                {{-- <a href="{{ route('consultants.edit') }}"
-                    class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-full text-white bg-[#00B458] hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
-                    + modify consultant
-                </a> --}}
+            @if (session('success'))
+                <div class="bg-green-500 text-white p-4 mb-4">
+                    {{ session('success') }}
+                </div>
+            @endif
 
-
-            </div>
-
-            {{-- Ici le code est correct --}}
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 @foreach ($consultants as $consultant)
                     <div class="bg-[#1A1C24] p-6 rounded-lg shadow-md flex flex-col justify-between">
                         <div>
                             <h3 class="text-white font-bold text-lg text-center">{{ $consultant->name }}</h3>
-                            <p class="text-gray-400 mt-2">{{ Str::limit($consultant->company, 100) }}</p>
-                            <p class="text-gray-400 mt-2">{{ Str::limit($consultant->role, 100) }}</p>
+                            <p class="text-gray-400 mt-2">{{ $consultant->company }}</p>
                         </div>
                         <div class="mt-4 flex justify-between items-center space-x-2">
                             <a href="{{ route('consultants.show', $consultant->id) }}"
-                                class="bg-blue-400 text-white px-3 py-1 rounded text-center hover:bg-blue-500 transition">View</a>
+                                class="bg-blue-400 text-white px-3 py-1 rounded text-center hover:bg-blue-500 transition">Details</a>
                             <a href="{{ route('consultants.edit', $consultant->id) }}"
                                 class="bg-yellow-400 text-white px-3 py-1 rounded text-center hover:bg-yellow-500 transition">Edit</a>
                             <form action="{{ route('consultants.destroy', $consultant->id) }}" method="POST"
@@ -78,4 +61,9 @@
                 @endforeach
             </div>
 
+            <div class="mt-4">
+                {{ $consultants->appends(['query' => $query])->links() }}
+            </div>
+        </div>
+    </div>
 </x-app-layout>

@@ -85,6 +85,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/{consultant}/edit', [ConsultantsController::class, 'edit'])->name('edit');
         Route::put('/{consultant}', [ConsultantsController::class, 'update'])->name('update');
         Route::delete('/{consultant}', [ConsultantsController::class, 'destroy'])->name('destroy');
+        Route::get('/delete', [ConsultantsController::class, 'delete'])->name('delete');
     });
 });
 

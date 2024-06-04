@@ -19,23 +19,19 @@
                 </div>
             @endif
 
-            <form action="{{ route('vulnerabilities.store') }}" method="POST">
+            <form action="{{ route('consultants.store') }}" method="POST">
                 @csrf
                 <div class="mb-4">
                     <label class="block text-white" for="name">Name</label>
                     <input type="text" name="name" id="name" class="w-full p-2 mt-2 bg-gray-800 text-white">
                 </div>
                 <div class="mb-4">
-                    <label class="block text-white" for="description">Description</label>
-                    <textarea name="description" id="description" class="w-full p-2 mt-2 bg-gray-800 text-white"></textarea>
+                    <label class="block text-white" for="company">Company</label>
+                    <textarea name="company" id="company" class="w-full p-2 mt-2 bg-gray-800 text-white"></textarea>
                 </div>
                 <div class="mb-4">
-                    <label class="block text-white" for="solution">Solution</label>
-                    <textarea name="solution" id="solution" class="w-full p-2 mt-2 bg-gray-800 text-white"></textarea>
-                </div>
-                <div class="mb-4">
-                    <label class="block text-white" for="level">Level</label>
-                    <input type="number" name="level" id="level" class="w-full p-2 mt-2 bg-gray-800 text-white">
+                    <label class="block text-white" for="role">Role</label>
+                    <textarea name="role" id="role" class="w-full p-2 mt-2 bg-gray-800 text-white"></textarea>
                 </div>
                 <button type="submit" class="bg-[#00B458] text-white px-4 py-2 rounded">Submit</button>
             </form>

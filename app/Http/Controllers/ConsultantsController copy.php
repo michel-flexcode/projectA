@@ -7,6 +7,26 @@ use App\Models\Consultant;
 
 class ConsultantsController extends Controller
 {
+    // public function consultants()
+    // {
+    //     $consultants = Consultant::all();
+    //     return view('sidebarpages.consultants', compact('consultants'));
+    // }
+
+    // public function consultants(Request $request)
+    // {
+    //     // Récupérer le terme de recherche de l'URL
+    //     $query = $request->input('query');
+
+    //     // Fetch all consultants with pagination
+    //     $consultants = Consultant::when($query, function ($queryBuilder) use ($query) {
+    //         $queryBuilder->where('name', 'LIKE', "%{$query}%")
+    //             ->orWhere('company', 'LIKE', "%{$query}%"); // Ajoutez d'autres champs au besoin
+    //     })->paginate(12);
+
+    //     // Retourner la vue et passer les données des consultants et le terme de recherche
+    //     return view('consultants.index', ['consultants' => $consultants, 'query' => $query]);
+    // }
 
     public function consultants(Request $request)
     {
@@ -25,34 +45,5 @@ class ConsultantsController extends Controller
 
         // Return the view with the consultants and the search query
         return view('consultants.index', ['consultants' => $consultants, 'query' => $query]);
-    }
-    //Edit ne marche pas
-    public function edit($id)
-    {
-        $consultants = Consultant::find($id);
-        return view('consultants.edit', compact('consultant'));
-    }
-
-    public function create()
-    {
-        return view('consultants.create');
-    }
-
-    public function store(Request $request)
-    {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'company' => 'required|string',
-            'role' => 'nullable|string',
-        ]);
-
-        $consultant = new Consultant();
-        $consultant->name = $request->name;
-        $consultant->company = $request->company;
-        $consultant->role = $request->role;
-        $consultant->save();
-
-        return redirect()->route('consultants.create');
-        // return redirect()->route('/consultants');
     }
 }

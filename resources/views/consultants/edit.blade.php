@@ -1,4 +1,4 @@
-<x-app-layout>
+{{-- <x-app-layout>
     <div class="bg-black flex items-center justify-center min-h-screen">
         <div class="bg-[#1A1C24] p-6 w-full max-w-screen-lg">
             <h2 class="text-white font-bold text-xl">Edit Vulnerability</h2>
@@ -44,4 +44,4 @@
             </form>
         </div>
     </div>
-</x-app-layout>
+</x-app-layout> --}}
