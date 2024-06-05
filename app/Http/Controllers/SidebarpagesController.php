@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Nist;
 use App\Models\Vulnerability;
 use App\Models\Report;
 use App\Models\Consultant;
@@ -18,13 +17,6 @@ class SidebarpagesController extends Controller
 
         // Return the view and pass the vulnerabilities data to it
         return view('sidebarpages.vulnerabilities', ['vulnerabilities' => $vulnerabilities]);
-    }
-
-    public function nist()
-    {
-        // Récupère les données depuis le modèle Nist
-        $nist = Nist::all(); // Récupérer tous les enregistrements NIST
-        return view('sidebarpages.nist', compact('nist')); // Passer les données à la vue
     }
 
     // Ici spécial, ne fonctionne pas comme les autres blocs : CRUD

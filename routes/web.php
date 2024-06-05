@@ -42,6 +42,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
     //Route fonctionnelles
     Route::prefix('vulnerabilities')->name('vulnerabilities.')->group(function () {
         Route::get('/', [VulnerabilityController::class, 'index'])->name('index');
@@ -55,7 +56,6 @@ Route::middleware('auth')->group(function () {
 
     // Routes sidebarpages
     Route::prefix('sidebarpages')->name('sidebarpages.')->group(function () {
-        Route::get('/nist', [SidebarpagesController::class, 'nist'])->name('nist');
         Route::get('/reports', [SidebarpagesController::class, 'reports'])->name('reports');
         Route::get('/vulnerabilities', [SidebarpagesController::class, 'vulnerabilities'])->name('vulnerabilities');
         Route::get('/companies', [CompaniesController::class, 'index'])->name('companies');
