@@ -52,20 +52,16 @@ Route::middleware('auth')->group(function () {
         Route::put('/{vulnerability}', [VulnerabilityController::class, 'update'])->name('update');
         Route::delete('/{vulnerability}', [VulnerabilityController::class, 'destroy'])->name('destroy');
     });
-    // Routes pour les vues dans le dossier sidebarpages
-    Route::get('/sidebarpages/nist', [SidebarpagesController::class, 'nist'])->name('sidebarpages.nist');
-    Route::get('/sidebarpages/reports', [SidebarpagesController::class, 'reports'])->name('sidebarpages.reports');
-    Route::get('/sidebarpages/vulnerabilities', [SidebarpagesController::class, 'vulnerabilities'])->name('sidebarpages.vulnerabilities');
-    Route::get('/sidebarpages/companies', [CompaniesController::class, 'index'])->name('sidebarpages.companies');
 
-    // 03/06/2024 consultant
-    Route::get('/sidebarpages/consultants', [SidebarpagesController::class, 'consultants'])->name('sidebarpages.consultants');
-
-    // 05/06/2024
+    // Routes sidebarpages
     Route::prefix('sidebarpages')->name('sidebarpages.')->group(function () {
-        Route::get('/consultants', [ConsultantsController::class, 'consultants'])->name('consultants');
-        // Ajoutez d'autres routes ici si nécessaire
+        Route::get('/nist', [SidebarpagesController::class, 'nist'])->name('nist');
+        Route::get('/reports', [SidebarpagesController::class, 'reports'])->name('reports');
+        Route::get('/vulnerabilities', [SidebarpagesController::class, 'vulnerabilities'])->name('vulnerabilities');
+        Route::get('/companies', [CompaniesController::class, 'index'])->name('companies');
+        Route::get('/consultants', [SidebarpagesController::class, 'consultants'])->name('consultants');
     });
+
 
     //search non fonctionnel
     // Route::get('/search', [SearchController::class, 'index'])->name('search');
