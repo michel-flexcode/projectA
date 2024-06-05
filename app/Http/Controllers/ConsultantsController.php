@@ -52,7 +52,7 @@ class ConsultantsController extends Controller
         $consultant->role = $request->role;
         $consultant->save();
 
-        return redirect()->route('consultants.create');
+        return redirect()->route('consultants.create')->with('success', 'Consultant created successfully');
     }
 
     public function update(Request $request, $id)
@@ -72,5 +72,11 @@ class ConsultantsController extends Controller
         }
 
         return redirect()->route('consultants.edit', $id)->with('success', 'Consultant updated successfully');
+    }
+
+    public function show($id)
+    {
+        $consultant = Consultant::find($id);
+        return view('consultants.show', compact('consultant'));
     }
 }
