@@ -5,12 +5,7 @@
                 <h2 class="text-white font-bold text-xl text-center">List of Consultants</h2>
             </div>
 
-            <div class="flex justify-between mb-4">
-                <!-- Bouton Create Consultant -->
-                <a href="{{ route('consultants.create') }}"
-                    class="bg-[#00B458] text-white px-4 py-2 rounded hover:bg-[#059E30] transition duration-300">Create
-                    Consultant</a>
-                <!-- Bouton SearchBar -->
+            <div class="flex justify-center mb-4">
                 <form method="GET" action="{{ route('consultants.index') }}" class="flex">
                     <input type="text" name="query" value="{{ $query ?? '' }}" placeholder="Search Consultants:"
                         class="px-2 py-1 border rounded-l-md focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-transparent">
@@ -23,11 +18,6 @@
                         </svg>
                     </button>
                 </form>
-                <!-- Bouton Back to Dashboard -->
-                <a href="{{ route('dashboard') }}"
-                    class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-700 transition duration-300">Back
-                    to
-                    Dashboard</a>
             </div>
 
             <div class="container mx-auto">
@@ -57,8 +47,6 @@
                     @endforeach
                 </div>
             </div>
-
-
         </div>
     </div>
 </x-app-layout>
