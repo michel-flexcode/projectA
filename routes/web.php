@@ -61,6 +61,11 @@ Route::middleware('auth')->group(function () {
     // 03/06/2024 consultant
     Route::get('/sidebarpages/consultants', [SidebarpagesController::class, 'consultants'])->name('sidebarpages.consultants');
 
+    // 05/06/2024
+    Route::prefix('sidebarpages')->name('sidebarpages.')->group(function () {
+        Route::get('/consultants', [ConsultantsController::class, 'consultants'])->name('consultants');
+        // Ajoutez d'autres routes ici si nécessaire
+    });
 
     //search non fonctionnel
     // Route::get('/search', [SearchController::class, 'index'])->name('search');

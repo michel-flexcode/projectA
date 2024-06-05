@@ -24,7 +24,7 @@ class ConsultantsController extends Controller
             ->paginate(12);
 
         // Return the view with the consultants and the search query
-        return view('consultants.index', ['consultants' => $consultants, 'query' => $query]);
+        return view('sidebarpages.consultants', ['consultants' => $consultants, 'query' => $query]);
     }
 
     public function edit($id)
