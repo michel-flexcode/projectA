@@ -4,8 +4,23 @@
             <div class="bg-[#1A1C24] p-6 flex justify-center h-full">
                 <h2 class="text-white font-bold text-xl">Registered companies</h2>
             </div>
-            <div class="bg-[#1A1C24] p-6 flex justify-center h-full">
+            <div class="bg-[#1A1C24] p-6 flex flex-col items-center space-y-4 h-full">
                 <h2 class="text-white font-bold text-xl">Listed vulnerabilities</h2>
+                <div class="text-white w-full">
+                    <div class="flex justify-between">
+                        <h3 class="font-bold">Last vulnerability:</h3>
+                        @if ($lastVulnerability)
+                            <p>{{ $lastVulnerability->name }} ({{ $lastVulnerability->created_at->format('Y-m-d') }})
+                            </p>
+                        @else
+                            <p>No vulnerabilities recorded yet.</p>
+                        @endif
+                    </div>
+                    <div class="flex justify-between mt-4">
+                        <h3 class="font-bold">Total vulnerabilities:</h3>
+                        <p>{{ $totalVulnerabilities }}</p>
+                    </div>
+                </div>
             </div>
             <div class="bg-[#1A1C24] p-6 flex flex-col items-center space-y-4 h-full">
                 <h2 class="text-white font-bold text-xl">Report new vulnerability</h2>
