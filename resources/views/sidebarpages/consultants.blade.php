@@ -11,7 +11,6 @@
                     class="bg-[#00B458] text-white px-4 py-2 rounded hover:bg-[#059E30] transition duration-300">Create
                     Consultant</a>
                 <!-- Bouton SearchBar -->
-                <!-- Bouton SearchBar -->
                 <form method="GET" action="{{ route('sidebarpages.consultants') }}" class="flex">
                     <input type="text" name="query" value="{{ $query ?? '' }}" placeholder="Search Consultants:"
                         class="px-2 py-1 border rounded-l-md focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-transparent">

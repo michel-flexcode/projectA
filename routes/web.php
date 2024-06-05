@@ -16,6 +16,10 @@ use App\Http\Controllers\VulnerabilityController;
 // 03/06
 use App\Http\Controllers\ConsultantsController;
 
+// 05/06/2024
+use App\Http\Controllers\DashboardController;
+
+
 
 
 use Illuminate\Support\Facades\Route;
@@ -88,6 +92,9 @@ Route::middleware('auth')->group(function () {
         Route::delete('/{consultant}', [ConsultantsController::class, 'destroy'])->name('destroy');
         Route::get('/delete', [ConsultantsController::class, 'delete'])->name('delete');
     });
+
+    // bizarre
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 });
 
 require __DIR__ . '/auth.php';
