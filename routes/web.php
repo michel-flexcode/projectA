@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SidebarpagesController;
 
+
 //Celui ci est plutôt pour le panneau interne dédoublement de personnalité
 use App\Http\Controllers\CompaniesController;
 //Ici bouton de nav
@@ -65,10 +66,11 @@ Route::middleware('auth')->group(function () {
         Route::get('/companies', [CompaniesController::class, 'index'])->name('companies');
         Route::get('/consultants', [SidebarpagesController::class, 'consultants'])->name('consultants');
     });
+    // Route::get('/sidebarpages/consultants', [SidebarpagesController::class, 'consultants'])->name('sidebarpages.consultants');
 
 
-    //search non fonctionnel
-    // Route::get('/search', [SearchController::class, 'index'])->name('search');
+
+    //search  fonctionnel
     Route::get('/search', [SearchController::class, 'index'])->name('search');
 
 
@@ -81,7 +83,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/reports', [ReportsController::class, 'index'])->name('reports.index');
 
-    // 03/06/2024 worker
+    // 03/06/2024 consultants
     Route::prefix('consultants')->name('consultants.')->group(function () {
         Route::get('/', [ConsultantsController::class, 'index'])->name('index');
         Route::get('/create', [ConsultantsController::class, 'create'])->name('create');

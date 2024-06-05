@@ -20,23 +20,28 @@ class SidebarpagesController extends Controller
     }
 
     // Ici spécial, ne fonctionne pas comme les autres blocs : CRUD
-    public function consultants()
+    public function consultants(Request $request)
     {
-        // Fetch all consultants with pagination
-        $consultants = Consultant::paginate(12); // Assurez-vous que Consultant est le bon modèle
+        // Get the search query from the request
+        $query = $request->input('query');
 
-        // Retourner la vue et passer les données des consultants
-        return view('sidebarpages.consultants', ['consultants' => $consultants]);
+        // Fetch consultants based on the search query
+        $consultants = Consultant::query()
+            ->when($query, function ($queryBuilder, $query) {
+                // Add conditions to filter consultants based on the search query
+                $queryBuilder->where('name', 'like', '%' . $query . '%')
+                    ->orWhere('company', 'like', '%' . $query . '%')
+                    ->orWhere('role', 'like', '%' . $query . '%');
+            })
+            ->paginate(12);
+
+        // Return the view with the consultants and the search query
+        return view('sidebarpages.consultants', ['consultants' => $consultants, 'query' => $query]);
     }
 
     public function reports()
     {
-        // Fetch all reports with pagination
-        // $reports = Report::paginate(12); // Corrected from Reports to Report
-        $reports = Report::with('company')->paginate(12); // Adjust the number as needed
-
-
-        // Return the view and pass the reports data to it
-        return view('sidebarpages.reports', ['reports' => $reports]); // Corrected variable name to $reports
+        $reports = Report::with('company')->paginate(12);
+        return view('sidebarpages.reports', ['reports' => $reports]);
     }
 }
