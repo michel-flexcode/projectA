@@ -26,10 +26,10 @@ class ConsultantsController extends Controller
         // Return the view with the consultants and the search query
         return view('consultants.index', ['consultants' => $consultants, 'query' => $query]);
     }
-    //Edit ne marche pas
+
     public function edit($id)
     {
-        $consultants = Consultant::find($id);
+        $consultant = Consultant::find($id); // Change to singular
         return view('consultants.edit', compact('consultant'));
     }
 
@@ -53,6 +53,24 @@ class ConsultantsController extends Controller
         $consultant->save();
 
         return redirect()->route('consultants.create');
-        // return redirect()->route('/consultants');
+    }
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'company' => 'required|string',
+            'role' => 'nullable|string',
+        ]);
+
+        $consultant = Consultant::find($id);
+        if ($consultant) {
+            $consultant->name = $request->name;
+            $consultant->company = $request->company;
+            $consultant->role = $request->role;
+            $consultant->save();
+        }
+
+        return redirect()->route('consultants.edit', $id)->with('success', 'Consultant updated successfully');
     }
 }

@@ -19,7 +19,6 @@
                 </div>
             @endif
 
-            <!-- Formulaire de mise à jour -->
             <form action="{{ route('consultants.update', $consultant->id) }}" method="POST" class="mb-4">
                 @csrf
                 @method('PUT')
@@ -38,14 +37,14 @@
                 </div>
                 <div class="flex justify-between">
                     <!-- Bouton Update -->
-                    <button type="submit"
-                        class="bg-[#00B458] text-white px-4 py-2 rounded hover:bg-[#059E30] transition duration-300">Update</button>
+                    <button type="submit" class="bg-[#00B458] text-white px-4 py-2 rounded">Update</button>
                     <!-- Bouton de retour -->
                     <a href="{{ route('sidebarpages.consultants') }}"
-                        class="bg-[#4B5563] text-white px-4 py-2 rounded hover:bg-[#374151] transition duration-300">Back
-                        to Consultants</a>
+                        class="bg-[#4B5563] text-white px-4 py-2 rounded">Back to Consultants</a>
                 </div>
             </form>
+
+
 
         </div>
     </div>

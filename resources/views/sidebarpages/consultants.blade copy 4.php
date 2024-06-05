@@ -21,6 +21,9 @@
             </div>
 
             <div class="container mx-auto">
+                <h1 class="text-3xl font-bold mb-4 text-white text-center py-2">List of consultants</h1>
+
+                {{-- Ici le code est correct --}}
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                     @foreach ($consultants as $consultant)
                         <div class="bg-[#1A1C24] p-6 rounded-lg shadow-md flex flex-col justify-between">
@@ -46,7 +49,5 @@
                         </div>
                     @endforeach
                 </div>
-            </div>
-        </div>
-    </div>
+
 </x-app-layout>
