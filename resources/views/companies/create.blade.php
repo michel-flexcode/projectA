@@ -35,6 +35,10 @@
                         class="w-full p-2 mt-2 bg-gray-800 text-white">
                 </div>
                 <div class="mb-4">
+                    <label class="block text-white" for="address">Address</label>
+                    <input type="text" name="address" id="address" class="w-full p-2 mt-2 bg-gray-800 text-white">
+                </div>
+                <div class="mb-4">
                     <label class="block text-white" for="logo">Logo</label>
                     <input type="file" name="logo" id="logo" class="w-full p-2 mt-2 bg-gray-800 text-white">
                 </div>

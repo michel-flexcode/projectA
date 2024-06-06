@@ -44,7 +44,7 @@ class CompaniesController extends Controller
         $company->save();
 
         // Redirection avec un message de succès
-        return redirect()->route('company.create')->with('success', 'Company registered successfully.');
+        return redirect()->route('companies.create')->with('success', 'Company registered successfully.');
     }
 
     public function create()
