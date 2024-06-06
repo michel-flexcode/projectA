@@ -17,15 +17,15 @@
                         class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-full text-white bg-[#00B458] hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
                         + Create a company
                     </a>
-                    <a href="{{ route('vulnerabilities.index') }}"
+                    <a href="{{ route('sidebarpages.companies') }}"
                         class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-full text-white bg-[#00B458] hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
                         + Modify a company
                     </a>
-                    <a href="{{ route('vulnerabilities.index') }}"
+                    <a href="{{ route('sidebarpages.companies') }}"
                         class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-full text-white bg-[#00B458] hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
                         + Check a company
                     </a>
-                    <a href="{{ route('vulnerabilities.index') }}"
+                    <a href="{{ route('sidebarpages.companies') }}"
                         class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-full text-white bg-[#00B458] hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
                         + Delete a company
                     </a>
@@ -60,15 +60,15 @@
                     class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-full text-white bg-[#00B458] hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
                     + Report a vulnerability
                 </a>
-                <a href="{{ route('vulnerabilities.index') }}"
+                <a href="{{ route('sidebarpages.vulnerabilities') }}"
                     class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-full text-white bg-[#00B458] hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
                     + Modify a vulnerability
                 </a>
-                <a href="{{ route('vulnerabilities.index') }}"
+                <a href="{{ route('sidebarpages.vulnerabilities') }}"
                     class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-full text-white bg-[#00B458] hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
                     + Check a vulnerability
                 </a>
-                <a href="{{ route('vulnerabilities.index') }}"
+                <a href="{{ route('sidebarpages.vulnerabilities') }}"
                     class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-full text-white bg-[#00B458] hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
                     + Delete a vulnerability
                 </a>

@@ -45,7 +45,7 @@
                 <div class="flex justify-between">
                     <button type="submit"
                         class="bg-[#00B458] text-white px-4 py-2 rounded hover:bg-[#059E30] transition duration-300">Submit</button>
-                    <a href="{{ route('companies.index') }}"
+                    <a href="{{ route('sidebarpages.companies') }}"
                         class="bg-[#4B5563] text-white rounded hover:bg-[#374151] transition duration-300 inline-block mt-2 md:mt-0 md:ml-4 px-4 py-2">Back
                         to Companies</a>
                 </div>
