@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Company;
 use App\Models\Vulnerability;
 use App\Models\Report;
 use App\Models\Consultant;
@@ -33,5 +34,19 @@ class SidebarpagesController extends Controller
     {
         $reports = Report::with('company')->paginate(12);
         return view('sidebarpages.reports', ['reports' => $reports]);
+    }
+
+    public function companies(Request $request)
+    {
+        $query = $request->input('query');
+        $companies = Company::query()
+            ->when($query, function ($queryBuilder, $query) {
+                $queryBuilder->where('name', 'like', '%' . $query . '%')
+                    ->orWhere('address', 'like', '%' . $query . '%')
+                    ->orWhere('web', 'like', '%' . $query . '%')
+                    ->orWhere('mail_domain', 'like', '%' . $query . '%');
+            })
+            ->paginate(12);
+        return view('sidebarpages.companies', ['companies' => $companies, 'query' => $query]);
     }
 }

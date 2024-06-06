@@ -105,9 +105,12 @@ Route::middleware('auth')->group(function () {
         Route::delete('/{company}', [CompaniesController::class, 'destroy'])->name('destroy');
         Route::get('/delete', [CompaniesController::class, 'delete'])->name('delete');
     });
+    Route::get('/companies', [SidebarpagesController::class, 'companies'])->name('sidebarpages.companies');
 
     // bizarre
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    // 06/024 work
+    Route::get('/companies', [SidebarpagesController::class, 'companies'])->name('sidebarpages.companies');
 });
 
 require __DIR__ . '/auth.php';
