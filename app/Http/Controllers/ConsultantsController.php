@@ -7,35 +7,32 @@ use App\Models\Consultant;
 
 class ConsultantsController extends Controller
 {
-
-    // public function consultants(Request $request)
-    // {
-    //     // Get the search query from the request
-    //     $query = $request->input('query');
-
-    //     // Fetch consultants based on the search query
-    //     $consultants = Consultant::query()
-    //         ->when($query, function ($queryBuilder, $query) {
-    //             // Add conditions to filter consultants based on the search query
-    //             $queryBuilder->where('name', 'like', '%' . $query . '%')
-    //                 ->orWhere('company', 'like', '%' . $query . '%')
-    //                 ->orWhere('role', 'like', '%' . $query . '%');
-    //         })
-    //         ->paginate(12);
-
-    //     // Return the view with the consultants and the search query
-    //     return view('sidebarpages.consultants', ['consultants' => $consultants, 'query' => $query]);
-    // }
-
-    public function edit($id)
-    {
-        $consultant = Consultant::find($id); // Change to singular
-        return view('consultants.edit', compact('consultant'));
-    }
-
     public function create()
     {
         return view('consultants.create');
+    }
+
+    public function show($id)
+    {
+        $consultant = Consultant::find($id);
+        return view('consultants.show', compact('consultant'));
+    }
+
+    public function edit($id)
+    {
+        $consultant = Consultant::find($id);
+        return view('consultants.edit', compact('consultant'));
+    }
+
+    public function destroy($id)
+    {
+        $consultant = Consultant::find($id);
+        if ($consultant) {
+            $consultant->delete();
+            return redirect()->route('dashboard')->with('success', 'Consultant deleted successfully');
+        } else {
+            return redirect()->route('dashboard')->with('error', 'Consultant not found');
+        }
     }
 
     public function store(Request $request)
@@ -72,11 +69,5 @@ class ConsultantsController extends Controller
         }
 
         return redirect()->route('consultants.edit', $id)->with('success', 'Consultant updated successfully');
-    }
-
-    public function show($id)
-    {
-        $consultant = Consultant::find($id);
-        return view('consultants.show', compact('consultant'));
     }
 }

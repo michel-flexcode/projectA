@@ -52,20 +52,18 @@
                                 @endif
                             </div>
                             <div class="mt-4 flex justify-between items-center space-x-2">
-                                <a href="{{ route('companies.show', $company->id) }}"
+                                <a href="{{ route('consultants.show', $consultant->id) }}"
                                     class="bg-blue-400 text-white px-3 py-1 rounded text-center hover:bg-blue-500 transition">View</a>
-                                <a href="{{ route('companies.edit', $company->id) }}"
+                                <a href="{{ route('consultants.edit', $consultant->id) }}"
                                     class="bg-yellow-400 text-white px-3 py-1 rounded text-center hover:bg-yellow-500 transition">Edit</a>
-                                <form action="{{ route('companies.destroy', $company->id) }}" method="POST"
+                                <form action="{{ route('consultants.destroy', $consultant->id) }}" method="POST"
                                     class="inline"
-                                    onsubmit="return confirm('Are you sure you want to delete this company?');">
+                                    onsubmit="return confirm('Are you sure you want to delete this consultant?');">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit"
                                         class="bg-red-400 text-white px-3 py-1 rounded text-center hover:bg-red-500 transition">Delete</button>
-                                </form>
                             </div>
-                        </div>
                     @endforeach
                 </div>
             </div>
@@ -74,6 +72,6 @@
             <div class="mt-4 justify-center">
                 {{ $companies->links() }}
             </div>
-        </div> <!-- Fermeture du div avec la classe grid-cols-1 -->
-    </div> <!-- Fermeture du div avec la classe bg-black -->
+        </div>
+    </div>
 </x-app-layout>
