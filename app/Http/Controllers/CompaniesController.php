@@ -46,4 +46,9 @@ class CompaniesController extends Controller
         // Redirection avec un message de succès
         return redirect()->route('company.create')->with('success', 'Company registered successfully.');
     }
+
+    public function create()
+    {
+        return view('companies.create');
+    }
 }

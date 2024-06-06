@@ -59,6 +59,17 @@ Route::middleware('auth')->group(function () {
         Route::delete('/{vulnerability}', [VulnerabilityController::class, 'destroy'])->name('destroy');
     });
 
+    Route::prefix('consultants')->name('consultants.')->group(function () {
+        Route::get('/', [ConsultantsController::class, 'index'])->name('index');
+        Route::get('/create', [ConsultantsController::class, 'create'])->name('create');
+        Route::post('/', [ConsultantsController::class, 'store'])->name('store');
+        Route::get('/{consultant}', [ConsultantsController::class, 'show'])->name('show');
+        Route::get('/{consultant}/edit', [ConsultantsController::class, 'edit'])->name('edit');
+        Route::put('/{consultant}', [ConsultantsController::class, 'update'])->name('update');
+        Route::delete('/{consultant}', [ConsultantsController::class, 'destroy'])->name('destroy');
+        Route::get('/delete', [ConsultantsController::class, 'delete'])->name('delete');
+    });
+
     // Routes sidebarpages
     Route::prefix('sidebarpages')->name('sidebarpages.')->group(function () {
         Route::get('/reports', [SidebarpagesController::class, 'reports'])->name('reports');
@@ -83,16 +94,16 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/reports', [ReportsController::class, 'index'])->name('reports.index');
 
-    // 03/06/2024 consultants
-    Route::prefix('consultants')->name('consultants.')->group(function () {
-        Route::get('/', [ConsultantsController::class, 'index'])->name('index');
-        Route::get('/create', [ConsultantsController::class, 'create'])->name('create');
-        Route::post('/', [ConsultantsController::class, 'store'])->name('store');
-        Route::get('/{consultant}', [ConsultantsController::class, 'show'])->name('show');
-        Route::get('/{consultant}/edit', [ConsultantsController::class, 'edit'])->name('edit');
-        Route::put('/{consultant}', [ConsultantsController::class, 'update'])->name('update');
-        Route::delete('/{consultant}', [ConsultantsController::class, 'destroy'])->name('destroy');
-        Route::get('/delete', [ConsultantsController::class, 'delete'])->name('delete');
+    // 06/06/2024 companies
+    Route::prefix('companies')->name('companies.')->group(function () {
+        Route::get('/', [CompaniesController::class, 'index'])->name('index');
+        Route::get('/create', [CompaniesController::class, 'create'])->name('create');
+        Route::post('/', [CompaniesController::class, 'store'])->name('store');
+        Route::get('/{company}', [CompaniesController::class, 'show'])->name('show');
+        Route::get('/{company}/edit', [CompaniesController::class, 'edit'])->name('edit');
+        Route::put('/{company}', [CompaniesController::class, 'update'])->name('update');
+        Route::delete('/{company}', [CompaniesController::class, 'destroy'])->name('destroy');
+        Route::get('/delete', [CompaniesController::class, 'delete'])->name('delete');
     });
 
     // bizarre
