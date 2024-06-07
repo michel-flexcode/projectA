@@ -80,6 +80,8 @@ class CompaniesController extends Controller
             'logo' => 'nullable|image|max:2048',
         ]);
 
+        // dd($validatedData);
+
         $company = new Company();
         $company->name = $validatedData['name'];
         $company->address = $validatedData['address'];
@@ -90,6 +92,8 @@ class CompaniesController extends Controller
         if ($request->hasFile('logo')) {
             $logoPath = $request->file('logo')->store('public/logos');
             $company->logo = str_replace('public/', 'storage/', $logoPath);
+            
+
         }
 
         $company->save();

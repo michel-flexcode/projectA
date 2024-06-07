@@ -30,6 +30,14 @@
             </div>
 
             <div class="mb-4">
+                <label for="consultants" class="block text-sm font-medium text-white">Consultants</label>
+                <input type="text" id="consultants"
+                    class="form-input mt-1 block w-full rounded-md bg-gray-700 text-white border-gray-600"
+                    placeholder="Start typing to search for consultants">
+                <div id="selected-consultants" class="mt-2"></div>
+            </div>
+
+            <div class="mb-4">
                 <label for="state" class="block text-sm font-medium text-white">State</label>
                 <input type="text" name="state" id="state"
                     class="form-input mt-1 block w-full rounded-md bg-gray-700 text-white border-gray-600">
@@ -97,6 +105,38 @@
             // Remove selected vulnerability
             $(document).on('click', '.remove-vulnerability', function() {
                 $(this).closest('.selected-vulnerability').remove();
+            });
+
+            // Consultants autocomplete
+            var consultants = [
+                @foreach ($consultants as $consultant)
+                    {
+                        label: "{{ $consultant->name }}",
+                        value: "{{ $consultant->id }}"
+                    },
+                @endforeach
+            ];
+
+            $("#consultants").autocomplete({
+                source: consultants,
+                select: function(event, ui) {
+                    $("#selected-consultants").append(
+                        '<div class="selected-consultant flex items-center mt-2" data-id="' + ui
+                        .item.value + '">' +
+                        '<input type="hidden" name="consultants[]" value="' + ui.item.value +
+                        '">' +
+                        '<span class="text-white">' + ui.item.label + '</span>' +
+                        '<button type="button" class="remove-consultant text-red-500 ml-2">Remove</button>' +
+                        '</div>'
+                    );
+                    $(this).val('');
+                    return false;
+                }
+            });
+
+            // Remove selected consultant
+            $(document).on('click', '.remove-consultant', function() {
+                $(this).closest('.selected-consultant').remove();
             });
         });
     </script>

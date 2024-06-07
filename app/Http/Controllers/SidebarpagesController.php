@@ -11,10 +11,18 @@ use Illuminate\Http\Request;
 
 class SidebarpagesController extends Controller
 {
-    public function vulnerabilities()
+    public function vulnerabilities(Request $request)
     {
-        $vulnerabilities = Vulnerability::paginate(12);
-        return view('sidebarpages.vulnerabilities', ['vulnerabilities' => $vulnerabilities]);
+        $query = $request->input('query');
+        $vulnerabilities = Vulnerability::query()
+            ->when($query, function ($queryBuilder, $query) {
+                $queryBuilder->where('name', 'like', '%' . $query . '%')
+                    ->orWhere('description', 'like', '%' . $query . '%')
+                    ->orWhere('solution', 'like', '%' . $query . '%')
+                    ->orWhere('level', 'like', '%' . $query . '%');
+            })
+            ->paginate(12);
+        return view('sidebarpages.vulnerabilities', ['vulnerabilities' => $vulnerabilities, 'query' => $query]);
     }
 
     public function consultants(Request $request)

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Report;
 use App\Models\Company;
 use App\Models\Vulnerability;
+use App\Models\Consultant;
+
 
 class ReportsController extends Controller
 {
@@ -18,8 +20,9 @@ class ReportsController extends Controller
     public function create()
     {
         $companies = Company::all();
+        $consultants = Consultant::all();
         $vulnerabilities = Vulnerability::all();
-        return view('reports.create', compact('companies', 'vulnerabilities'));
+        return view('reports.create', compact('consultants', 'companies', 'vulnerabilities'));
     }
 
     public function store(Request $request)
