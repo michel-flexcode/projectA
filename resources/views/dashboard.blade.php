@@ -4,7 +4,7 @@
             <div class="bg-[#1A1C24] p-6 flex flex-col items-center space-y-4 h-full">
                 <h2 class="text-white font-bold text-xl">Registered companies</h2>
                 <div class="flex justify-between w-full text-white">
-                    <span class="font-bold">Last registred companu:</span>
+                    <span class="font-bold">Last registred company:</span>
                     @if ($lastCompany)
                         <span>{{ $lastCompany->name }}</span>
                         <span> {{ $lastCompany->created_at->format('Y-m-d') }}</span>
