@@ -38,8 +38,13 @@ class Report extends Model
 //     {
 //         return $this->belongsTo(Consultant::class);
 //     }
+// public function consultants()
+// {
+//     return $this->belongsToMany(Consultant::class);
+// }
 public function consultants()
 {
-    return $this->belongsToMany(Consultant::class);
+    return $this->hasMany(Consultant::class);
 }
+
 }
