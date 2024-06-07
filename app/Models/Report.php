@@ -18,7 +18,7 @@ class Report extends Model
         'recommendations',
         'proposals',
         'conclusions',
-        'consultants'
+        'consultants',
         // Ajoutez d'autres attributs remplissables au besoin
     ];
 
@@ -34,8 +34,12 @@ class Report extends Model
         return $this->hasMany(Scope::class);
     }
 
-    public function consultants()
-    {
-        return $this->belongsTo(Consultant::class);
-    }
+//     public function consultants()
+//     {
+//         return $this->belongsTo(Consultant::class);
+//     }
+public function consultants()
+{
+    return $this->belongsToMany(Consultant::class);
+}
 }

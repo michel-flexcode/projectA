@@ -14,4 +14,9 @@ class Consultant extends Model
         'company',
         'role',
     ];
+    
+    public function reports()
+{
+    return $this->hasMany(Report::class);
+}
 }

@@ -13,10 +13,11 @@ return new class extends Migration
     {
         Schema::create('reports', function (Blueprint $table) {
             $table->id();
-            //capable de comprendre si nom table + underscore laravel natif )
             $table->foreignId('company_id')->constrained()->onDelete('cascade');
+            // $table->foreignId('consultant_id')->nullable()->constrained()->onDelete('set null');
             $table->text('name_doc');
             $table->text('vulnerabilities');
+            $table->text('consultants');
             $table->string('state');
             $table->date('date');
             $table->text('recommendations');
