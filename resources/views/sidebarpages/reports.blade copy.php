@@ -18,7 +18,8 @@
 
                         <p class="mb-2"><strong>Vulnerabilities:</strong>
                             @foreach (explode(',', $report->vulnerabilities) as $vulnerabilityId)
-                                {{ $vulnerabilityId }} <!-- Afficher le nom de la vulnérabilité -->
+                                <!-- Eloquent system to get info from id -->
+                                {{ App\Models\Vulnerability::find($vulnerabilityId)->name }}
                                 @if (!$loop->last), @endif
                             @endforeach
                         </p>
@@ -26,7 +27,8 @@
                         <!-- Afficher les consultants -->
                         <p class="mb-2"><strong>Consultants:</strong>
                             @foreach (explode(',', $report->consultants) as $consultantId)
-                                {{ $consultantId }} <!-- Afficher le nom du consultant -->
+                            <!-- Eloquent system to get info from id -->
+                                {{ App\Models\Consultant::find($consultantId)->name }}
                                 @if (!$loop->last), @endif
                             @endforeach
                         </p>

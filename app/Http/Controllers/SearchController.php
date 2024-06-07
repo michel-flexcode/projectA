@@ -12,6 +12,7 @@ class SearchController extends Controller
         $query = $request->input('query');
         $results = Report::where('name_doc', 'LIKE', "%{$query}%")
             ->orWhere('vulnerabilities', 'LIKE', "%{$query}%")
+            ->orWhere('consultants', 'LIKE', "%{$query}%")
             ->orWhere('state', 'LIKE', "%{$query}%")
             ->orWhere('recommendations', 'LIKE', "%{$query}%")
             ->orWhere('proposals', 'LIKE', "%{$query}%")

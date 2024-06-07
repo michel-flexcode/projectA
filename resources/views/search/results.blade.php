@@ -11,7 +11,16 @@
                         <div>
                             <h2 class="text-xl font-bold mb-2 text-center">{{ $result->name_doc }}</h2>
                             <p class="mb-2"><strong>Company:</strong> {{ $result->company->name }}</p>
-                            <p class="mb-2"><strong>Vulnerabilities:</strong> {{ $result->vulnerabilities }}</p>
+                            <p class="mb-2"><strong>Vulnerabilities:</strong> 
+                                @foreach (explode(',', $result->vulnerabilities) as $vulnerability)
+                                    {{ \App\Models\Vulnerability::find($vulnerability)->name }}@if (!$loop->last), @endif
+                                @endforeach
+                            </p>
+                            <p class="mb-2"><strong>Consultants:</strong> 
+                                @foreach (explode(',', $result->consultants) as $consultantId)
+                                    {{ \App\Models\Consultant::find($consultantId)->name }}@if (!$loop->last), @endif
+                                @endforeach
+                            </p>
                             <p class="mb-2"><strong>State:</strong> {{ $result->state }}</p>
                             <p class="mb-2"><strong>Date:</strong> {{ $result->date }}</p>
                             <p class="mb-2"><strong>Recommendations:</strong> {{ $result->recommendations }}</p>
