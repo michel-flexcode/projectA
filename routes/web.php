@@ -6,24 +6,17 @@ use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SidebarpagesController;
 
 
-//Celui ci est plutôt pour le panneau interne dédoublement de personnalité
 use App\Http\Controllers\CompaniesController;
-//Ici bouton de nav
 use App\Http\Controllers\ReportsController;
-
-//01/06/2024 vulnerabilites crud
 use App\Http\Controllers\VulnerabilityController;
-
-// 03/06
 use App\Http\Controllers\ConsultantsController;
-
-// 05/06/2024
 use App\Http\Controllers\DashboardController;
 
 
 
 
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------

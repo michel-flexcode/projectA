@@ -16,12 +16,16 @@ class DashboardController extends Controller
         $totalVulnerabilities = Vulnerability::count();
         $totalCompanies = Company::count();
 
+        $companies = Company::all();
+
+
         // Passer les données à la vue
         return view('dashboard', [
             'lastVulnerability' => $lastVulnerability,
             'totalVulnerabilities' => $totalVulnerabilities,
             'lastCompany' => $lastCompany,
             'totalCompanies' => $totalCompanies,
+            'companies' => $companies,  
         ]);
     }
 }

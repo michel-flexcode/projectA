@@ -21,4 +21,9 @@ class Company extends Model
     {
         return $this->hasMany(Report::class);
     }
+    // gestion panneau
+    public function lastReport()
+    {
+        return $this->hasOne(Report::class)->latest();
+    }
 }
