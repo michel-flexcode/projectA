@@ -104,6 +104,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     // 06/024 work
     Route::get('/companies', [SidebarpagesController::class, 'companies'])->name('sidebarpages.companies');
+
 });
 
 require __DIR__ . '/auth.php';
