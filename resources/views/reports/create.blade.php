@@ -22,20 +22,21 @@
             </div>
 
             <div class="mb-4">
-                <label for="vulnerabilities" class="block text-sm font-medium text-white">Vulnerabilities</label>
-                <input type="text" id="vulnerabilities"
-                    class="form-input mt-1 block w-full rounded-md bg-gray-700 text-white border-gray-600"
-                    placeholder="Start typing to search for vulnerabilities">
-                <div id="selected-vulnerabilities" class="mt-2"></div>
-            </div>
+    <label for="vulnerabilities" class="block text-sm font-medium text-white">Vulnerabilities</label>
+    <input type="text" id="vulnerabilities"
+        class="form-input mt-1 block w-full rounded-md bg-gray-700 text-white border-gray-600"
+        placeholder="Start typing to search for vulnerabilities">
+    <div id="selected-vulnerabilities" class="mt-2"></div>
+</div>
 
-            <div class="mb-4">
-                <label for="consultants" class="block text-sm font-medium text-white">Consultants</label>
-                <input type="text" id="consultants"
-                    class="form-input mt-1 block w-full rounded-md bg-gray-700 text-white border-gray-600"
-                    placeholder="Start typing to search for consultants">
-                <div id="selected-consultants" class="mt-2"></div>
-            </div>
+<div class="mb-4">
+    <label for="consultants" class="block text-sm font-medium text-white">Consultants</label>
+    <input type="text" id="consultants"
+        class="form-input mt-1 block w-full rounded-md bg-gray-700 text-white border-gray-600"
+        placeholder="Start typing to search for consultants">
+    <div id="selected-consultants" class="mt-2"></div>
+</div>
+
 
             <div class="mb-4">
                 <label for="state" class="block text-sm font-medium text-white">State</label>

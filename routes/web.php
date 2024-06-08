@@ -108,6 +108,8 @@ Route::middleware('auth')->group(function () {
     //08 pour edit
     Route::get('/reports/{report}/edit', [ReportsController::class, 'edit'])->name('reports.edit');
     Route::delete('/reports/{report}', [ReportsController::class, 'destroy'])->name('reports.destroy');
+    Route::put('/reports/{id}/edit', [ReportsController::class, 'edit'])->name('reports.edit');
+    Route::resource('reports', ReportController::class);
 
 
 });
