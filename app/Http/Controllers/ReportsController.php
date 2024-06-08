@@ -25,66 +25,18 @@ class ReportsController extends Controller
         return view('reports.create', compact('consultants', 'companies', 'vulnerabilities'));
     }
 
-    // public function store(Request $request)
-    // {
-    //     $validatedData = $request->validate([
-    //         'company_id' => 'required|exists:companies,id',
-    //         'vulnerabilities' => 'nullable|array',
-    //         'vulnerabilities.*' => 'exists:vulnerabilities,id',
-    //         'state' => 'nullable|string|max:255',
-    //         'recommendations' => 'nullable|string',
-    //         'proposals' => 'nullable|string',
-    //         'conclusions' => 'nullable|string',
-    //     ]);
+    public function edit(Report $report)
+    {
+        return view('reports.edit', compact('report'));
+    }
 
-    //     $company = Company::find($validatedData['company_id']);
-    //     $reportName = $company->name . '_' . now()->format('Ymd_His');
+    public function destroy(Report $report)
+    {
+        $report->delete();
 
-    //     $report = new Report();
-    //     $report->name_doc = $reportName;
-    //     $report->company_id = $validatedData['company_id'];
-    //     $report->vulnerabilities = implode(',', $validatedData['vulnerabilities'] ?? []);
-    //     $report->state = $validatedData['state'];
-    //     $report->date = now();  // Set the date to the current date and time
-    //     $report->recommendations = $validatedData['recommendations'];
-    //     $report->proposals = $validatedData['proposals'];
-    //     $report->conclusions = $validatedData['conclusions'];
-    //     $report->save();
+        return redirect()->route('reports.index')->with('success', 'Report deleted successfully.');
+    }
 
-    //     return redirect()->route('reports.create')->with('success', 'Report created successfully.');
-    // }
-
-    // public function store(Request $request)
-    // {
-    //     $validatedData = $request->validate([
-    //         'companyid' => 'required|exists:companies,id',
-    //         'vulnerabilities' => 'nullable|array',
-    //         'vulnerabilities.' => 'exists:vulnerabilities,id',
-    //         'consultants' => 'nullable|array', // Ajoutez une validation pour les consultants
-    //         'consultants.' => 'exists:consultants,id', // Ajoutez une validation pour chaque consultant
-    //         'state' => 'nullable|string|max:255',
-    //         'recommendations' => 'nullable|string',
-    //         'proposals' => 'nullable|string',
-    //         'conclusions' => 'nullable|string',
-    //     ]);
-
-    //     $company = Company::find($validatedData['company_id']);
-    //     $reportName = $company->name . '' . now()->format('Ymd_His');
-
-    //     $report = new Report();
-    //     $report->name_doc = $reportName;
-    //     $report->company_id = $validatedData['company_id'];
-    //     $report->vulnerabilities = implode(',', $validatedData['vulnerabilities'] ?? []);
-    //     $report->consultants = implode(',', $validatedData['consultants'] ?? []);
-    //     $report->state = $validatedData['state'];
-    //     $report->date = now();
-    //     $report->recommendations = $validatedData['recommendations'];
-    //     $report->proposals = $validatedData['proposals'];
-    //     $report->conclusions = $validatedData['conclusions'];
-    //     $report->save();
-
-    //     return redirect()->route('reports.create')->with('success', 'Report created successfully.');
-    // }
     public function store(Request $request)
 {
     $validatedData = $request->validate([
@@ -99,8 +51,6 @@ class ReportsController extends Controller
         'conclusions' => 'nullable|string',
     ]);
 
-    // $dd = $validatedData;
-    // dd($dd);
 
     $company = Company::find($validatedData['company_id']);
     $reportName = $company->name . '_' . now()->format('Ymd_His');

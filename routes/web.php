@@ -105,6 +105,11 @@ Route::middleware('auth')->group(function () {
     // 06/024 work
     Route::get('/companies', [SidebarpagesController::class, 'companies'])->name('sidebarpages.companies');
 
+    //08 pour edit
+    Route::get('/reports/{report}/edit', [ReportsController::class, 'edit'])->name('reports.edit');
+    Route::delete('/reports/{report}', [ReportsController::class, 'destroy'])->name('reports.destroy');
+
+
 });
 
 require __DIR__ . '/auth.php';

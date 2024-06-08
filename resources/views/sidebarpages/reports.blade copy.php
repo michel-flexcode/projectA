@@ -12,9 +12,9 @@
 
                     <div>
 
-                        <h2 class="text-xl font-bold mb-2 text-center">{{ $report->company->name }}</h2>
+                    <h2 class="text-xl font-bold mb-2 text-center">{{ $report->name_doc }}</h2>
 
-                        <p class="mb-2"><strong>Name:</strong> {{ $report->name_doc }}</p>
+                    <p class="mb-2"><strong>Company:</strong>{{ $report->company->name }}</p>
 
                         <p class="mb-2"><strong>Vulnerabilities:</strong>
                             @foreach (explode(',', $report->vulnerabilities) as $vulnerabilityId)

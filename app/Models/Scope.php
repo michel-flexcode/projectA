@@ -15,13 +15,11 @@ class Scope extends Model
         'ordre',
     ];
 
-    // Relationship: Scope belongs to a Report
     public function report()
     {
         return $this->belongsTo(Report::class);
     }
 
-    // Relationship: Scope has many Vulnerabilities
     public function vulnerabilities()
     {
         return $this->hasMany(Vulnerability::class);

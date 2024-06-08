@@ -4,11 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Report extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory;
 
     protected $fillable = [
         'company_id',
@@ -32,8 +31,9 @@ class Report extends Model
         return $this->hasMany(Scope::class);
     }
 
-    public function consultants()
-    {
-        return $this->hasMany(Consultant::class);
-    }
+public function consultants()
+{
+    return $this->hasMany(Consultant::class);
+}
+
 }

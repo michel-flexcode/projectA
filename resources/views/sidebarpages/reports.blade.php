@@ -12,9 +12,9 @@
 
                     <div>
 
-                    <h2 class="text-xl font-bold mb-2 text-center">{{ $report->name_doc }}</h2>
+                        <h2 class="text-xl font-bold mb-2 text-center">{{ $report->name_doc }}</h2>
 
-                    <p class="mb-2"><strong>Company:</strong>{{ $report->company->name }}</p>
+                        <p class="mb-2"><strong>Company:</strong>{{ $report->company->name }}</p>
 
                         <p class="mb-2"><strong>Vulnerabilities:</strong>
                             @foreach (explode(',', $report->vulnerabilities) as $vulnerabilityId)
@@ -27,7 +27,7 @@
                         <!-- Afficher les consultants -->
                         <p class="mb-2"><strong>Consultants:</strong>
                             @foreach (explode(',', $report->consultants) as $consultantId)
-                            <!-- Eloquent system to get info from id -->
+                                <!-- Eloquent system to get info from id -->
                                 {{ App\Models\Consultant::find($consultantId)->name }}
                                 @if (!$loop->last), @endif
                             @endforeach
@@ -45,6 +45,23 @@
 
                     </div>
 
+                    <div class="flex justify-between items-center mt-4">
+
+                        <!-- Bouton Edit -->
+                        <a href="{{ route('reports.edit', $report->id) }}"
+                            class="bg-yellow-400 text-white px-3 py-1 rounded text-center hover:bg-yellow-500 transition">Edit</a>
+
+                        <!-- Bouton Delete -->
+                        <form action="{{ route('reports.destroy', $report->id) }}" method="POST"
+                            onsubmit="return confirm('Are you sure you want to delete this report?');">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit"
+                                class="bg-red-400 text-white px-3 py-1 rounded text-center hover:bg-red-500 transition">Delete</button>
+                        </form>
+
+                    </div>
+
                 </div>
 
             @endforeach
@@ -57,6 +74,13 @@
 
             {{ $reports->links() }}
 
+        </div>
+
+        <!-- Bouton Back to Dashboard -->
+        <div class="flex justify-center">
+            <a href="{{ route('dashboard') }}"
+                class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-700 transition duration-300">Back to
+                Dashboard</a>
         </div>
 
     </div>
