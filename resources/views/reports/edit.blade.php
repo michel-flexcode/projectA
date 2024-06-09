@@ -108,9 +108,12 @@
 
             <div class="mb-4 text-center">
                 <button type="submit"
-                    class="bg-[#0086F4] text-white px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2">Update
-                    Report</button>
+                    class="inline-block bg-[#0086F4] text-white px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2">UpdateReport</button>
+                <a href="{{ route('dashboard') }}"
+                    class="inline-block bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-700 transition duration-300">Back to Dashboard</a>
             </div>
+
+            
         </form>
     </div>
 
