@@ -111,6 +111,8 @@ Route::middleware('auth')->group(function () {
     Route::put('/reports/{id}/edit', [ReportsController::class, 'edit'])->name('reports.edit');
     Route::resource('reports', ReportsController::class);
 
+    //09/06/2024 génération d'un pdf 
+    Route::get('/reports/{id}/pdf', [ReportsController::class, 'generatePDF'])->name('reports.pdf');
 
 });
 

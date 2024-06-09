@@ -135,12 +135,12 @@ public function edit($id)
         return view('reports.show', compact('report'));
     }
 
-public function generatePDF($id)
+    public function generatePDF($id)
 {
     $report = Report::findOrFail($id);
 
     // Récupérer le contenu HTML de la vue PDF
-    $pdfView = view('reports.printpdf', compact('report'))->render();
+    $pdfView = view('pdf.printpdf', compact('report'))->render();
 
     // Configuration de Dompdf
     $options = new Options();
@@ -159,4 +159,5 @@ public function generatePDF($id)
     // Envoyer le PDF en réponse
     return $dompdf->stream("report_{$id}.pdf");
 }
+
 }

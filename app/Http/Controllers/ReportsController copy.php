@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Dompdf\Dompdf;
-use Dompdf\Options;
-
 use App\Models\Report;
 use App\Models\Company;
 use App\Models\Vulnerability;
@@ -129,34 +127,24 @@ public function edit($id)
     }
 
     public function show($id)
-    {
-        $report = Report::findOrFail($id);
-
-        return view('reports.show', compact('report'));
-    }
-
-public function generatePDF($id)
 {
+    // Récupérer le rapport correspondant à l'ID
     $report = Report::findOrFail($id);
 
-    // Récupérer le contenu HTML de la vue PDF
-    $pdfView = view('reports.printpdf', compact('report'))->render();
+    // Retourner la vue "show" avec les détails du rapport
+    $view = view('reports.show', compact('report'))->render();
 
-    // Configuration de Dompdf
-    $options = new Options();
-    $options->set('isHtml5ParserEnabled', true);
-    $options->set('isRemoteEnabled', true);
+    // Créer une instance de Dompdf
+    $dompdf = new Dompdf();
 
-    // Initialiser Dompdf
-    $dompdf = new Dompdf($options);
+    // Charger la vue dans Dompdf
+    $dompdf->loadHtml($view);
 
-    // Charger le contenu HTML dans Dompdf
-    $dompdf->loadHtml($pdfView);
-
-    // Rendre le PDF
+    // Générer le PDF
     $dompdf->render();
 
-    // Envoyer le PDF en réponse
-    return $dompdf->stream("report_{$id}.pdf");
+    // Retourner la réponse PDF
+    return $dompdf->stream('report.pdf');
 }
+
 }

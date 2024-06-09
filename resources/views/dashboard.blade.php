@@ -105,7 +105,7 @@
                         </div>
                         <div class="text-right text-white">
                             <template x-if="company.lastReport">
-                                <p class="text-sm" x-text="'Last report made on: ' + new Date(company.lastReport.created_at).toLocaleDateString()"></p>
+                                <p class="text-sm" x-text="'Last report: ' + new Date(company.lastReport.created_at).toLocaleDateString()"></p>
                             </template>
                             <template x-if="!company.lastReport">
                                 <p class="text-sm">No reports made yet.</p>

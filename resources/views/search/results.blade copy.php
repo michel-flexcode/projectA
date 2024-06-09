@@ -10,7 +10,6 @@
                     <div class="bg-gray-800 rounded-lg p-6 text-white flex flex-col justify-between">
                         <div>
                             <h2 class="text-xl font-bold mb-2 text-center">{{ $result->name_doc }}</h2>
-                            <!-- Afficher les détails du rapport -->
                             <p class="mb-2"><strong>Company:</strong> {{ $result->company->name }}</p>
                             <p class="mb-2"><strong>Vulnerabilities:</strong> 
                                 @foreach (explode(',', $result->vulnerabilities) as $vulnerability)
@@ -27,16 +26,6 @@
                             <p class="mb-2"><strong>Recommendations:</strong> {{ $result->recommendations }}</p>
                             <p class="mb-2"><strong>Proposals:</strong> {{ $result->proposals }}</p>
                             <p class="mb-2"><strong>Conclusions:</strong> {{ $result->conclusions }}</p>
-                        </div>
-                        <!-- Boutons Edit, Show, Delete -->
-                        <div class="flex justify-between items-center mt-4">
-                            <a href="{{ route('reports.edit', $result->id) }}" class="bg-yellow-400 text-white px-3 py-1 rounded text-center hover:bg-yellow-500 transition">Edit</a>
-                            <a href="{{ route('reports.show', $result->id) }}" class="bg-blue-400 text-white px-3 py-1 rounded text-center hover:bg-blue-500 transition">Show</a>
-                            <form action="{{ route('reports.destroy', $result->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this report?');">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="bg-red-400 text-white px-3 py-1 rounded text-center hover:bg-red-500 transition">Delete</button>
-                            </form>
                         </div>
                     </div>
                 @endforeach

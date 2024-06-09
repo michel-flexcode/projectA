@@ -81,7 +81,7 @@
             <a href="{{ route('dashboard') }}"
                 class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-700 transition duration-300">Back to
                 Dashboard</a>
-        </div>
+        </div>aa
 
     </div>
 
