@@ -25,24 +25,24 @@ class ReportsController extends Controller
         return view('reports.create', compact('consultants', 'companies', 'vulnerabilities'));
     }
 
-    public function edit($id)
+
+public function edit($id)
 {
     $report = Report::findOrFail($id);
 
-    // Récupérer les ID des vulnérabilités et des consultants
     $selectedVulnerabilities = explode(',', $report->vulnerabilities);
     $selectedConsultants = explode(',', $report->consultants);
 
-    // Récupérer les noms des vulnérabilités et des consultants correspondants
-    $vulnerabilitiesNames = Vulnerability::whereIn('id', $selectedVulnerabilities)->pluck('name')->toArray();
-    $consultantsNames = Consultant::whereIn('id', $selectedConsultants)->pluck('name')->toArray();
+    $vulnerabilitiesNames = Vulnerability::whereIn('id', $selectedVulnerabilities)->pluck('name', 'id')->toArray();
+    $consultantsNames = Consultant::whereIn('id', $selectedConsultants)->pluck('name', 'id')->toArray();
 
-    // Récupérer toutes les vulnérabilités et tous les consultants
+    $companies = Company::all();
     $vulnerabilities = Vulnerability::all();
     $consultants = Consultant::all();
 
     return view('reports.edit', compact(
         'report', 
+        'companies',
         'vulnerabilitiesNames', 
         'consultantsNames', 
         'vulnerabilities', 
@@ -55,7 +55,6 @@ class ReportsController extends Controller
 
     public function update(Request $request, $id)
 {
-    // Valider les données du formulaire
     $validatedData = $request->validate([
         'name_doc' => 'required|string|max:255',
         'state' => 'required|string|max:255',
@@ -66,29 +65,22 @@ class ReportsController extends Controller
         'vulnerabilities.*' => 'exists:vulnerabilities,id',
         'consultants' => 'nullable|array', 
         'consultants.*' => 'exists:consultants,id', 
-        // Ajoutez les règles de validation pour les autres champs si nécessaire
     ]);
 
-    // Trouver le rapport à mettre à jour
     $report = Report::findOrFail($id);
 
-    // Mettre à jour les attributs du rapport avec les données validées
     $report->name_doc = $validatedData['name_doc'];
     $report->state = $validatedData['state'];
     $report->recommendations = $validatedData['recommendations'];
     $report->proposals = $validatedData['proposals'];
     $report->conclusions = $validatedData['conclusions'];
 
-    // Mettre à jour les vulnérabilités
     $report->vulnerabilities = implode(',', $validatedData['vulnerabilities'] ?? []);
 
-    // Mettre à jour les consultants
     $report->consultants = implode(',', $validatedData['consultants'] ?? []);
 
-    // Enregistrez les modifications apportées au rapport
     $report->save();
 
-    // Rediriger l'utilisateur vers une autre page ou retourner une réponse JSON, selon vos besoins
     return redirect()->route('reports.edit', $report->id)->with('success', 'Report updated successfully');
 }
 

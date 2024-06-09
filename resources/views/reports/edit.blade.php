@@ -21,6 +21,12 @@
         <form method="POST" action="{{ route('reports.update', $report->id) }}" class="bg-gray-800 p-6 rounded-lg max-w-4xl mx-auto">
             @csrf
             @method('PUT')
+            
+            <div class="mb-4">
+                <label for="name_doc" class="block text-sm font-medium text-white">Document name</label>
+                <input type="text" name="name_doc" id="name_doc" value="{{ $report->name_doc }}"
+                    class="form-input mt-1 block w-full rounded-md bg-gray-700 text-white border-gray-600">
+            </div>
 
             <div class="mb-4">
                 <label for="company_id" class="block text-sm font-medium text-white">Company</label>
