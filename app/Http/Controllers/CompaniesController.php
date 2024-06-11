@@ -80,8 +80,6 @@ class CompaniesController extends Controller
             'logo' => 'nullable|image|max:2048',
         ]);
 
-        // dd($validatedData);
-
         $company = new Company();
         $company->name = $validatedData['name'];
         $company->address = $validatedData['address'];
