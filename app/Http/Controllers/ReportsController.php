@@ -53,12 +53,12 @@ public function edit($id)
         'selectedVulnerabilities', 
         'selectedConsultants'
     ));
-}
+    }
 
 
     public function update(Request $request, $id)
-{
-    $validatedData = $request->validate([
+    {
+        $validatedData = $request->validate([
         'name_doc' => 'required|string|max:255',
         'state' => 'required|string|max:255',
         'recommendations' => 'nullable|string',
@@ -135,50 +135,24 @@ public function edit($id)
         return view('reports.show', compact('report'));
     }
 
-// public function generatePDF($id)
-// {
-//     $report = Report::findOrFail($id);
+    public function generatePdf($id)
+    {
+        $report = Report::findOrFail($id);
 
-//     // Récupérer le contenu HTML de la vue PDF
-//     $pdfView = view('reports.printpdf', compact('report'))->render();
+        // Créez une vue pour le PDF
+        $view = view('reports.printpdf', compact('report'))->render();
 
-//     // Configuration de Dompdf
-//     $options = new Options();
-//     $options->set('isHtml5ParserEnabled', true);
-//     $options->set('isRemoteEnabled', true);
+        // Configure Dompdf
+        $options = new Options();
+        $options->set('isHtml5ParserEnabled', true);
+        $options->set('isRemoteEnabled', true);
 
-//     // Initialiser Dompdf
-//     $dompdf = new Dompdf($options);
+        $dompdf = new Dompdf($options);
+        $dompdf->loadHtml($view);
+        $dompdf->setPaper('A4', 'portrait');
+        $dompdf->render();
 
-//     // Charger le contenu HTML dans Dompdf
-//     $dompdf->loadHtml($pdfView);
-
-//     // Rendre le PDF
-//     $dompdf->render();
-
-//     // Envoyer le PDF en réponse
-//     return $dompdf->stream("report_{$id}.pdf");
-// }
-
-public function generatePdf($id)
-{
-    $report = Report::findOrFail($id);
-
-    // Créez une vue pour le PDF
-    $view = view('reports.printpdf', compact('report'))->render();
-
-    // Configure Dompdf
-    $options = new Options();
-    $options->set('isHtml5ParserEnabled', true);
-    $options->set('isRemoteEnabled', true);
-
-    $dompdf = new Dompdf($options);
-    $dompdf->loadHtml($view);
-    $dompdf->setPaper('A4', 'portrait');
-    $dompdf->render();
-
-    // Téléchargement du PDF
-    return $dompdf->stream("report_{$id}.pdf");
-
-}
+        // Téléchargement du PDF
+        return $dompdf->stream("report_{$id}.pdf");
+    }
 };
