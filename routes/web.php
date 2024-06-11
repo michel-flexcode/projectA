@@ -70,9 +70,6 @@ Route::middleware('auth')->group(function () {
         Route::get('/companies', [CompaniesController::class, 'index'])->name('companies');
         Route::get('/consultants', [SidebarpagesController::class, 'consultants'])->name('consultants');
     });
-    // Route::get('/sidebarpages/consultants', [SidebarpagesController::class, 'consultants'])->name('sidebarpages.consultants');
-
-
 
     //search  fonctionnel
     Route::get('/search', [SearchController::class, 'index'])->name('search');
@@ -112,7 +109,9 @@ Route::middleware('auth')->group(function () {
     Route::resource('reports', ReportsController::class);
 
     //09/06/2024 génération d'un pdf 
-    Route::get('/reports/{id}/pdf', [ReportsController::class, 'generatePDF'])->name('reports.pdf');
+    // Route::get('/reports/{id}/pdf', [ReportsController::class, 'generatePDF'])->name('reports.pdf');
+    Route::get('/reports/{id}/printpdf', [ReportsController::class, 'generatePDF'])->name('reports.pdf');
+
 
 });
 
