@@ -51,6 +51,10 @@
                         <a href="{{ route('reports.edit', $report->id) }}"
                             class="bg-yellow-400 text-white px-3 py-1 rounded text-center hover:bg-yellow-500 transition">Edit</a>
 
+                        <!-- Bouton Print PDF -->
+                        <a href="{{ route('reports.show', $report->id) }}"
+                            class="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600 transition duration-300">Show</a>
+
                         <!-- Bouton Delete -->
                         <form action="{{ route('reports.destroy', $report->id) }}" method="POST"
                             onsubmit="return confirm('Are you sure you want to delete this report?');">
