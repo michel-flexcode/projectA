@@ -12,6 +12,7 @@ use App\Http\Controllers\VulnerabilityController;
 use App\Http\Controllers\ConsultantsController;
 use App\Http\Controllers\DashboardController;
 
+use App\Http\Controllers\LegalController;
 
 
 
@@ -30,6 +31,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [HomepageController::class, 'index']);
+Route::get('/legal', [LegalController::class, 'index'])->name('legal');
+
 
 
 Route::get('/dashboard', function () {

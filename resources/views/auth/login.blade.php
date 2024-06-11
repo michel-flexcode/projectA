@@ -77,7 +77,9 @@
             </div>
         </div>
         <footer class="w-full text-right p-4 text-white font-roboto fixed bottom-0">
-            <p class="mr-[2%]">Legal Mentions</p>
+            <p class="mr-[2%]">
+                <a href="{{ route('legal') }}">Legal Mentions</a>
+            </p>        
         </footer>
     </div>
     </div>
